@@ -1,0 +1,734 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						9,
+						13
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.24"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "include",
+					"jsonFile" : "directory-include-Debug-7ead17b99bffc88b66bb.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.24"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "include"
+				},
+				{
+					"build" : "src",
+					"childIndexes" : 
+					[
+						3,
+						8
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-src-Debug-b6cf2213fc5053b67c22.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.24"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "/home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/thirdparty/glfw-3.3.8/build",
+					"childIndexes" : 
+					[
+						4,
+						5,
+						6,
+						7
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-thirdparty.glfw-3.3.8-Debug-e662365a1981c28379a3.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 1,
+					"source" : "thirdparty/glfw-3.3.8",
+					"targetIndexes" : 
+					[
+						39
+					]
+				},
+				{
+					"build" : "/home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/thirdparty/glfw-3.3.8/build/src",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-thirdparty.glfw-3.3.8.src-Debug-98cc33c288452b8a9720.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 3,
+					"projectIndex" : 1,
+					"source" : "thirdparty/glfw-3.3.8/src",
+					"targetIndexes" : 
+					[
+						12,
+						40
+					]
+				},
+				{
+					"build" : "/home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/thirdparty/glfw-3.3.8/build/examples",
+					"jsonFile" : "directory-thirdparty.glfw-3.3.8.examples-Debug-513b0933fdd159ec1d8a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 3,
+					"projectIndex" : 1,
+					"source" : "thirdparty/glfw-3.3.8/examples",
+					"targetIndexes" : 
+					[
+						0,
+						8,
+						18,
+						26,
+						28,
+						30,
+						31,
+						32,
+						42
+					]
+				},
+				{
+					"build" : "/home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/thirdparty/glfw-3.3.8/build/tests",
+					"jsonFile" : "directory-thirdparty.glfw-3.3.8.tests-Debug-5a2148a0084babdd6392.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 3,
+					"projectIndex" : 1,
+					"source" : "thirdparty/glfw-3.3.8/tests",
+					"targetIndexes" : 
+					[
+						1,
+						3,
+						5,
+						6,
+						7,
+						13,
+						19,
+						20,
+						21,
+						22,
+						24,
+						25,
+						27,
+						29,
+						33,
+						35,
+						36,
+						37,
+						38,
+						43
+					]
+				},
+				{
+					"build" : "/home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/thirdparty/glfw-3.3.8/build/docs",
+					"jsonFile" : "directory-thirdparty.glfw-3.3.8.docs-Debug-7c6bea1af265686d0549.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 3,
+					"projectIndex" : 1,
+					"source" : "thirdparty/glfw-3.3.8/docs",
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"build" : "/home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/thirdparty/glew-2.2.0/build",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-thirdparty.glew-2.2.0.build.cmake-Debug-685bd5dfad7d38f0daf2.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.8.12"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 2,
+					"source" : "thirdparty/glew-2.2.0/build/cmake",
+					"targetIndexes" : 
+					[
+						9,
+						10,
+						11,
+						41
+					]
+				},
+				{
+					"build" : "tests",
+					"childIndexes" : 
+					[
+						10
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-tests-Debug-b01f6abb0ab61427ef3b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.24"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "tests",
+					"targetIndexes" : 
+					[
+						34
+					]
+				},
+				{
+					"build" : "_deps/googletest-build",
+					"childIndexes" : 
+					[
+						11
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.googletest-build-Debug-fa1b18db30f420365ea4.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 9,
+					"projectIndex" : 3,
+					"source" : "cmake-build-debug/_deps/googletest-src"
+				},
+				{
+					"build" : "_deps/googletest-build/googlemock",
+					"childIndexes" : 
+					[
+						12
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.googletest-build.googlemock-Debug-bf9fdd3b55254f0b407b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 10,
+					"projectIndex" : 4,
+					"source" : "cmake-build-debug/_deps/googletest-src/googlemock",
+					"targetIndexes" : 
+					[
+						14,
+						15
+					]
+				},
+				{
+					"build" : "_deps/googletest-build/googletest",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.googletest-build.googletest-Debug-3dd8ec126503fe170ebd.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 11,
+					"projectIndex" : 5,
+					"source" : "cmake-build-debug/_deps/googletest-src/googletest",
+					"targetIndexes" : 
+					[
+						16,
+						17
+					]
+				},
+				{
+					"build" : "examples",
+					"jsonFile" : "directory-examples-Debug-1c8b83b621b6ef38a245.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.24"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "examples",
+					"targetIndexes" : 
+					[
+						23
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						9,
+						13
+					],
+					"name" : "LenoEngine",
+					"targetIndexes" : 
+					[
+						2,
+						23,
+						34
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						3,
+						4,
+						5,
+						6,
+						7
+					],
+					"name" : "GLFW",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						12,
+						13,
+						18,
+						19,
+						20,
+						21,
+						22,
+						24,
+						25,
+						26,
+						27,
+						28,
+						29,
+						30,
+						31,
+						32,
+						33,
+						35,
+						36,
+						37,
+						38,
+						39,
+						40,
+						42,
+						43
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						8
+					],
+					"name" : "glew",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						9,
+						10,
+						11,
+						41
+					]
+				},
+				{
+					"childIndexes" : 
+					[
+						4
+					],
+					"directoryIndexes" : 
+					[
+						10
+					],
+					"name" : "googletest-distribution",
+					"parentIndex" : 0
+				},
+				{
+					"childIndexes" : 
+					[
+						5
+					],
+					"directoryIndexes" : 
+					[
+						11
+					],
+					"name" : "gmock",
+					"parentIndex" : 3,
+					"targetIndexes" : 
+					[
+						14,
+						15
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						12
+					],
+					"name" : "gtest",
+					"parentIndex" : 4,
+					"targetIndexes" : 
+					[
+						16,
+						17
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 5,
+					"id" : "boing::@77ad8b3fcc824fbaa732",
+					"jsonFile" : "target-boing-Debug-78d8589cf3972c20ef77.json",
+					"name" : "boing",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "clipboard::@efb126fa4fade091eb89",
+					"jsonFile" : "target-clipboard-Debug-834241aab37a7c68868d.json",
+					"name" : "clipboard",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "core::@145eef247bfb46b6828c",
+					"jsonFile" : "target-core-Debug-0d509d8b7e26b85548ff.json",
+					"name" : "core",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "cursor::@efb126fa4fade091eb89",
+					"jsonFile" : "target-cursor-Debug-9c136c452777587eddc7.json",
+					"name" : "cursor",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "docs::@99e06805485864fb3c9d",
+					"jsonFile" : "target-docs-Debug-488ad9ead706555751e9.json",
+					"name" : "docs",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "empty::@efb126fa4fade091eb89",
+					"jsonFile" : "target-empty-Debug-a9e10020ba91df59aa84.json",
+					"name" : "empty",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "events::@efb126fa4fade091eb89",
+					"jsonFile" : "target-events-Debug-361b7a29aedc2801a28c.json",
+					"name" : "events",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "gamma::@efb126fa4fade091eb89",
+					"jsonFile" : "target-gamma-Debug-a12074adc5d3e3e2c1e1.json",
+					"name" : "gamma",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "gears::@77ad8b3fcc824fbaa732",
+					"jsonFile" : "target-gears-Debug-6c0bd9566dc617267736.json",
+					"name" : "gears",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "glew::@0a4f131a83869697273f",
+					"jsonFile" : "target-glew-Debug-6834507ecced952a47b1.json",
+					"name" : "glew",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "glew_s::@0a4f131a83869697273f",
+					"jsonFile" : "target-glew_s-Debug-b41c07f9a711c36cfb26.json",
+					"name" : "glew_s",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "glewinfo::@0a4f131a83869697273f",
+					"jsonFile" : "target-glewinfo-Debug-51e77bdde1cc9b4ac976.json",
+					"name" : "glewinfo",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "glfw::@8b33acbf12bfe1325c8f",
+					"jsonFile" : "target-glfw-Debug-6e00d30cd107cccb2621.json",
+					"name" : "glfw",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "glfwinfo::@efb126fa4fade091eb89",
+					"jsonFile" : "target-glfwinfo-Debug-8ae436433c39063b1307.json",
+					"name" : "glfwinfo",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 11,
+					"id" : "gmock::@0f7bb11d64f3678238c7",
+					"jsonFile" : "target-gmock-Debug-2a9fc100b5134491c1a9.json",
+					"name" : "gmock",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 11,
+					"id" : "gmock_main::@0f7bb11d64f3678238c7",
+					"jsonFile" : "target-gmock_main-Debug-c0a4a8054884a421cdca.json",
+					"name" : "gmock_main",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 12,
+					"id" : "gtest::@1ea2dfc0605fe3ab2a3f",
+					"jsonFile" : "target-gtest-Debug-cd6b6fb2f930a2167b97.json",
+					"name" : "gtest",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 12,
+					"id" : "gtest_main::@1ea2dfc0605fe3ab2a3f",
+					"jsonFile" : "target-gtest_main-Debug-6383ea828c81437a224c.json",
+					"name" : "gtest_main",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "heightmap::@77ad8b3fcc824fbaa732",
+					"jsonFile" : "target-heightmap-Debug-d3c09773ef2f471d34d8.json",
+					"name" : "heightmap",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "icon::@efb126fa4fade091eb89",
+					"jsonFile" : "target-icon-Debug-567346105508be0a2cc3.json",
+					"name" : "icon",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "iconify::@efb126fa4fade091eb89",
+					"jsonFile" : "target-iconify-Debug-741d6e97ba27c7656c27.json",
+					"name" : "iconify",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "inputlag::@efb126fa4fade091eb89",
+					"jsonFile" : "target-inputlag-Debug-795906a7da6d90b3ff1b.json",
+					"name" : "inputlag",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "joysticks::@efb126fa4fade091eb89",
+					"jsonFile" : "target-joysticks-Debug-ca6f3b0182abfb637562.json",
+					"name" : "joysticks",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 13,
+					"id" : "maintest::@714eac15f71a94114fdf",
+					"jsonFile" : "target-maintest-Debug-e246ce6f5ba6e44e62a2.json",
+					"name" : "maintest",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "monitors::@efb126fa4fade091eb89",
+					"jsonFile" : "target-monitors-Debug-fff9ed734c891e3040f0.json",
+					"name" : "monitors",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "msaa::@efb126fa4fade091eb89",
+					"jsonFile" : "target-msaa-Debug-66975b8e27b131fd3fe2.json",
+					"name" : "msaa",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "offscreen::@77ad8b3fcc824fbaa732",
+					"jsonFile" : "target-offscreen-Debug-b2cf5d4892663589e8e5.json",
+					"name" : "offscreen",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "opacity::@efb126fa4fade091eb89",
+					"jsonFile" : "target-opacity-Debug-331a0a9d1a5de5969c2f.json",
+					"name" : "opacity",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "particles::@77ad8b3fcc824fbaa732",
+					"jsonFile" : "target-particles-Debug-90c54b01a44c770dca71.json",
+					"name" : "particles",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "reopen::@efb126fa4fade091eb89",
+					"jsonFile" : "target-reopen-Debug-6569e237514f8347fd8d.json",
+					"name" : "reopen",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "sharing::@77ad8b3fcc824fbaa732",
+					"jsonFile" : "target-sharing-Debug-60cf1fafee67e2bbc619.json",
+					"name" : "sharing",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "simple::@77ad8b3fcc824fbaa732",
+					"jsonFile" : "target-simple-Debug-d9c9448f4e770b41b165.json",
+					"name" : "simple",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "splitview::@77ad8b3fcc824fbaa732",
+					"jsonFile" : "target-splitview-Debug-0dd0f1f2f3e132b7b0b1.json",
+					"name" : "splitview",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "tearing::@efb126fa4fade091eb89",
+					"jsonFile" : "target-tearing-Debug-e3440f5ea3a80e714003.json",
+					"name" : "tearing",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "tests::@a44f0ac069e85531cdee",
+					"jsonFile" : "target-tests-Debug-2d8c2bcd268deb476a26.json",
+					"name" : "tests",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "threads::@efb126fa4fade091eb89",
+					"jsonFile" : "target-threads-Debug-038403e1c9bfbb929de6.json",
+					"name" : "threads",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "timeout::@efb126fa4fade091eb89",
+					"jsonFile" : "target-timeout-Debug-b40879dbc1a6551141a2.json",
+					"name" : "timeout",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "title::@efb126fa4fade091eb89",
+					"jsonFile" : "target-title-Debug-32ac01f808e6e3f55876.json",
+					"name" : "title",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "triangle-vulkan::@efb126fa4fade091eb89",
+					"jsonFile" : "target-triangle-vulkan-Debug-a06a42913800c60cae79.json",
+					"name" : "triangle-vulkan",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "uninstall::@52c85179e57bfd000b57",
+					"jsonFile" : "target-uninstall-Debug-fcc1b3144226d66f8e1f.json",
+					"name" : "uninstall",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "update_mappings::@8b33acbf12bfe1325c8f",
+					"jsonFile" : "target-update_mappings-Debug-eb5394fd5f24756ce0d9.json",
+					"name" : "update_mappings",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "visualinfo::@0a4f131a83869697273f",
+					"jsonFile" : "target-visualinfo-Debug-e317b75d2807767c16bd.json",
+					"name" : "visualinfo",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "wave::@77ad8b3fcc824fbaa732",
+					"jsonFile" : "target-wave-Debug-44186acabcc2462eee27.json",
+					"name" : "wave",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "windows::@efb126fa4fade091eb89",
+					"jsonFile" : "target-windows-Debug-5601ece959f72e580a7b.json",
+					"name" : "windows",
+					"projectIndex" : 1
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug",
+		"source" : "/home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

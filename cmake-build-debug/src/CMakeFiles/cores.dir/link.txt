@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcores.a CMakeFiles/cores.dir/window.cpp.o
+/usr/bin/ranlib libcores.a

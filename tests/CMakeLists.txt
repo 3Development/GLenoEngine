@@ -23,7 +23,7 @@ enable_testing()
 
 set(TEST_FILES 
     buildproject_test.cpp
-)
+        ../include/core/window/window.h)
 
 add_executable(tests ${TEST_FILES})
 

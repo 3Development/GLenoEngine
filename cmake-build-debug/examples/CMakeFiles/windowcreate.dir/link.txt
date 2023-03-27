@@ -1,0 +1,2 @@
+/usr/bin/ar qc libwindowcreate.a CMakeFiles/windowcreate.dir/maintest.cpp.o
+/usr/bin/ranlib libwindowcreate.a
