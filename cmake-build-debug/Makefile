@@ -733,6 +733,32 @@ maintest/fast:
 	$(MAKE) $(MAKESILENT) -f examples/CMakeFiles/maintest.dir/build.make examples/CMakeFiles/maintest.dir/build
 .PHONY : maintest/fast
 
+#=============================================================================
+# Target rules for targets named maintest1
+
+# Build rule for target.
+maintest1: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 maintest1
+.PHONY : maintest1
+
+# fast build rule for target.
+maintest1/fast:
+	$(MAKE) $(MAKESILENT) -f examples/CMakeFiles/maintest1.dir/build.make examples/CMakeFiles/maintest1.dir/build
+.PHONY : maintest1/fast
+
+#=============================================================================
+# Target rules for targets named cpptest
+
+# Build rule for target.
+cpptest: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cpptest
+.PHONY : cpptest
+
+# fast build rule for target.
+cpptest/fast:
+	$(MAKE) $(MAKESILENT) -f examples/CMakeFiles/cpptest.dir/build.make examples/CMakeFiles/cpptest.dir/build
+.PHONY : cpptest/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -751,6 +777,7 @@ help:
 	@echo "... boing"
 	@echo "... clipboard"
 	@echo "... core"
+	@echo "... cpptest"
 	@echo "... cursor"
 	@echo "... empty"
 	@echo "... events"
@@ -771,6 +798,7 @@ help:
 	@echo "... inputlag"
 	@echo "... joysticks"
 	@echo "... maintest"
+	@echo "... maintest1"
 	@echo "... monitors"
 	@echo "... msaa"
 	@echo "... offscreen"

@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/maintest.dir/maintest.cpp.o"
-  "CMakeFiles/maintest.dir/maintest.cpp.o.d"
+  "CMakeFiles/maintest.dir/openglLearn.cpp.o"
+  "CMakeFiles/maintest.dir/openglLearn.cpp.o.d"
   "maintest"
   "maintest.pdb"
 )

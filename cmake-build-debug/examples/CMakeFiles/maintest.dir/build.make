@@ -69,41 +69,43 @@ include examples/CMakeFiles/maintest.dir/progress.make
 # Include the compile flags for this target's objects.
 include examples/CMakeFiles/maintest.dir/flags.make
 
-examples/CMakeFiles/maintest.dir/maintest.cpp.o: examples/CMakeFiles/maintest.dir/flags.make
-examples/CMakeFiles/maintest.dir/maintest.cpp.o: /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/examples/maintest.cpp
-examples/CMakeFiles/maintest.dir/maintest.cpp.o: examples/CMakeFiles/maintest.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object examples/CMakeFiles/maintest.dir/maintest.cpp.o"
-	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/examples && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT examples/CMakeFiles/maintest.dir/maintest.cpp.o -MF CMakeFiles/maintest.dir/maintest.cpp.o.d -o CMakeFiles/maintest.dir/maintest.cpp.o -c /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/examples/maintest.cpp
+examples/CMakeFiles/maintest.dir/openglLearn.cpp.o: examples/CMakeFiles/maintest.dir/flags.make
+examples/CMakeFiles/maintest.dir/openglLearn.cpp.o: /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/examples/openglLearn.cpp
+examples/CMakeFiles/maintest.dir/openglLearn.cpp.o: examples/CMakeFiles/maintest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object examples/CMakeFiles/maintest.dir/openglLearn.cpp.o"
+	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/examples && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT examples/CMakeFiles/maintest.dir/openglLearn.cpp.o -MF CMakeFiles/maintest.dir/openglLearn.cpp.o.d -o CMakeFiles/maintest.dir/openglLearn.cpp.o -c /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/examples/openglLearn.cpp
 
-examples/CMakeFiles/maintest.dir/maintest.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/maintest.dir/maintest.cpp.i"
-	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/examples && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/examples/maintest.cpp > CMakeFiles/maintest.dir/maintest.cpp.i
+examples/CMakeFiles/maintest.dir/openglLearn.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/maintest.dir/openglLearn.cpp.i"
+	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/examples && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/examples/openglLearn.cpp > CMakeFiles/maintest.dir/openglLearn.cpp.i
 
-examples/CMakeFiles/maintest.dir/maintest.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/maintest.dir/maintest.cpp.s"
-	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/examples && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/examples/maintest.cpp -o CMakeFiles/maintest.dir/maintest.cpp.s
+examples/CMakeFiles/maintest.dir/openglLearn.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/maintest.dir/openglLearn.cpp.s"
+	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/examples && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/examples/openglLearn.cpp -o CMakeFiles/maintest.dir/openglLearn.cpp.s
 
 # Object files for target maintest
 maintest_OBJECTS = \
-"CMakeFiles/maintest.dir/maintest.cpp.o"
+"CMakeFiles/maintest.dir/openglLearn.cpp.o"
 
 # External object files for target maintest
 maintest_EXTERNAL_OBJECTS =
 
-examples/maintest: examples/CMakeFiles/maintest.dir/maintest.cpp.o
+examples/maintest: examples/CMakeFiles/maintest.dir/openglLearn.cpp.o
 examples/maintest: examples/CMakeFiles/maintest.dir/build.make
 examples/maintest: src/libcore.a
 examples/maintest: /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/thirdparty/glfw-3.3.8/build/src/libglfw3.a
+examples/maintest: /usr/lib64/librt.a
+examples/maintest: /usr/lib64/libm.so
+examples/maintest: lib/libGLEWd.so.2.2.0
+examples/maintest: /usr/lib64/libOpenGL.so
+examples/maintest: /usr/lib64/libGLX.so
+examples/maintest: /usr/lib64/libGLU.so
 examples/maintest: /usr/lib64/libSM.so
 examples/maintest: /usr/lib64/libICE.so
 examples/maintest: /usr/lib64/libX11.so
 examples/maintest: /usr/lib64/libXext.so
-examples/maintest: /usr/lib64/librt.a
-examples/maintest: /usr/lib64/libm.so
 examples/maintest: /usr/lib64/libX11.so
 examples/maintest: /usr/lib64/libXext.so
-examples/maintest: /usr/lib64/librt.a
-examples/maintest: /usr/lib64/libm.so
 examples/maintest: examples/CMakeFiles/maintest.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable maintest"
 	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/examples && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/maintest.dir/link.txt --verbose=$(VERBOSE)

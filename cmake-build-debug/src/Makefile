@@ -175,6 +175,30 @@ core/fast:
 	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/core.dir/build.make src/CMakeFiles/core.dir/build
 .PHONY : core/fast
 
+core/gl/shader/shaderProgram.o: core/gl/shader/shaderProgram.cpp.o
+.PHONY : core/gl/shader/shaderProgram.o
+
+# target to build an object file
+core/gl/shader/shaderProgram.cpp.o:
+	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/core.dir/build.make src/CMakeFiles/core.dir/core/gl/shader/shaderProgram.cpp.o
+.PHONY : core/gl/shader/shaderProgram.cpp.o
+
+core/gl/shader/shaderProgram.i: core/gl/shader/shaderProgram.cpp.i
+.PHONY : core/gl/shader/shaderProgram.i
+
+# target to preprocess a source file
+core/gl/shader/shaderProgram.cpp.i:
+	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/core.dir/build.make src/CMakeFiles/core.dir/core/gl/shader/shaderProgram.cpp.i
+.PHONY : core/gl/shader/shaderProgram.cpp.i
+
+core/gl/shader/shaderProgram.s: core/gl/shader/shaderProgram.cpp.s
+.PHONY : core/gl/shader/shaderProgram.s
+
+# target to generate assembly for a file
+core/gl/shader/shaderProgram.cpp.s:
+	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/core.dir/build.make src/CMakeFiles/core.dir/core/gl/shader/shaderProgram.cpp.s
+.PHONY : core/gl/shader/shaderProgram.cpp.s
+
 core/window/window.o: core/window/window.cpp.o
 .PHONY : core/window/window.o
 
@@ -199,6 +223,30 @@ core/window/window.cpp.s:
 	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/core.dir/build.make src/CMakeFiles/core.dir/core/window/window.cpp.s
 .PHONY : core/window/window.cpp.s
 
+utilz/io/fileReaders.o: utilz/io/fileReaders.cpp.o
+.PHONY : utilz/io/fileReaders.o
+
+# target to build an object file
+utilz/io/fileReaders.cpp.o:
+	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/core.dir/build.make src/CMakeFiles/core.dir/utilz/io/fileReaders.cpp.o
+.PHONY : utilz/io/fileReaders.cpp.o
+
+utilz/io/fileReaders.i: utilz/io/fileReaders.cpp.i
+.PHONY : utilz/io/fileReaders.i
+
+# target to preprocess a source file
+utilz/io/fileReaders.cpp.i:
+	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/core.dir/build.make src/CMakeFiles/core.dir/utilz/io/fileReaders.cpp.i
+.PHONY : utilz/io/fileReaders.cpp.i
+
+utilz/io/fileReaders.s: utilz/io/fileReaders.cpp.s
+.PHONY : utilz/io/fileReaders.s
+
+# target to generate assembly for a file
+utilz/io/fileReaders.cpp.s:
+	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/core.dir/build.make src/CMakeFiles/core.dir/utilz/io/fileReaders.cpp.s
+.PHONY : utilz/io/fileReaders.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -212,9 +260,15 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... core"
+	@echo "... core/gl/shader/shaderProgram.o"
+	@echo "... core/gl/shader/shaderProgram.i"
+	@echo "... core/gl/shader/shaderProgram.s"
 	@echo "... core/window/window.o"
 	@echo "... core/window/window.i"
 	@echo "... core/window/window.s"
+	@echo "... utilz/io/fileReaders.o"
+	@echo "... utilz/io/fileReaders.i"
+	@echo "... utilz/io/fileReaders.s"
 .PHONY : help
 
 

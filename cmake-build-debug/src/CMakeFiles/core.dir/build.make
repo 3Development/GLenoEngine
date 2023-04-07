@@ -69,10 +69,24 @@ include src/CMakeFiles/core.dir/progress.make
 # Include the compile flags for this target's objects.
 include src/CMakeFiles/core.dir/flags.make
 
+src/CMakeFiles/core.dir/core/gl/shader/shaderProgram.cpp.o: src/CMakeFiles/core.dir/flags.make
+src/CMakeFiles/core.dir/core/gl/shader/shaderProgram.cpp.o: /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/src/core/gl/shader/shaderProgram.cpp
+src/CMakeFiles/core.dir/core/gl/shader/shaderProgram.cpp.o: src/CMakeFiles/core.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/core.dir/core/gl/shader/shaderProgram.cpp.o"
+	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/core.dir/core/gl/shader/shaderProgram.cpp.o -MF CMakeFiles/core.dir/core/gl/shader/shaderProgram.cpp.o.d -o CMakeFiles/core.dir/core/gl/shader/shaderProgram.cpp.o -c /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/src/core/gl/shader/shaderProgram.cpp
+
+src/CMakeFiles/core.dir/core/gl/shader/shaderProgram.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/core.dir/core/gl/shader/shaderProgram.cpp.i"
+	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/src/core/gl/shader/shaderProgram.cpp > CMakeFiles/core.dir/core/gl/shader/shaderProgram.cpp.i
+
+src/CMakeFiles/core.dir/core/gl/shader/shaderProgram.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/core.dir/core/gl/shader/shaderProgram.cpp.s"
+	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/src/core/gl/shader/shaderProgram.cpp -o CMakeFiles/core.dir/core/gl/shader/shaderProgram.cpp.s
+
 src/CMakeFiles/core.dir/core/window/window.cpp.o: src/CMakeFiles/core.dir/flags.make
 src/CMakeFiles/core.dir/core/window/window.cpp.o: /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/src/core/window/window.cpp
 src/CMakeFiles/core.dir/core/window/window.cpp.o: src/CMakeFiles/core.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/core.dir/core/window/window.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/CMakeFiles/core.dir/core/window/window.cpp.o"
 	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/core.dir/core/window/window.cpp.o -MF CMakeFiles/core.dir/core/window/window.cpp.o.d -o CMakeFiles/core.dir/core/window/window.cpp.o -c /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/src/core/window/window.cpp
 
 src/CMakeFiles/core.dir/core/window/window.cpp.i: cmake_force
@@ -83,17 +97,35 @@ src/CMakeFiles/core.dir/core/window/window.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/core.dir/core/window/window.cpp.s"
 	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/src/core/window/window.cpp -o CMakeFiles/core.dir/core/window/window.cpp.s
 
+src/CMakeFiles/core.dir/utilz/io/fileReaders.cpp.o: src/CMakeFiles/core.dir/flags.make
+src/CMakeFiles/core.dir/utilz/io/fileReaders.cpp.o: /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/src/utilz/io/fileReaders.cpp
+src/CMakeFiles/core.dir/utilz/io/fileReaders.cpp.o: src/CMakeFiles/core.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/CMakeFiles/core.dir/utilz/io/fileReaders.cpp.o"
+	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/core.dir/utilz/io/fileReaders.cpp.o -MF CMakeFiles/core.dir/utilz/io/fileReaders.cpp.o.d -o CMakeFiles/core.dir/utilz/io/fileReaders.cpp.o -c /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/src/utilz/io/fileReaders.cpp
+
+src/CMakeFiles/core.dir/utilz/io/fileReaders.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/core.dir/utilz/io/fileReaders.cpp.i"
+	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/src/utilz/io/fileReaders.cpp > CMakeFiles/core.dir/utilz/io/fileReaders.cpp.i
+
+src/CMakeFiles/core.dir/utilz/io/fileReaders.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/core.dir/utilz/io/fileReaders.cpp.s"
+	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/src/utilz/io/fileReaders.cpp -o CMakeFiles/core.dir/utilz/io/fileReaders.cpp.s
+
 # Object files for target core
 core_OBJECTS = \
-"CMakeFiles/core.dir/core/window/window.cpp.o"
+"CMakeFiles/core.dir/core/gl/shader/shaderProgram.cpp.o" \
+"CMakeFiles/core.dir/core/window/window.cpp.o" \
+"CMakeFiles/core.dir/utilz/io/fileReaders.cpp.o"
 
 # External object files for target core
 core_EXTERNAL_OBJECTS =
 
+src/libcore.a: src/CMakeFiles/core.dir/core/gl/shader/shaderProgram.cpp.o
 src/libcore.a: src/CMakeFiles/core.dir/core/window/window.cpp.o
+src/libcore.a: src/CMakeFiles/core.dir/utilz/io/fileReaders.cpp.o
 src/libcore.a: src/CMakeFiles/core.dir/build.make
 src/libcore.a: src/CMakeFiles/core.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libcore.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library libcore.a"
 	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/src && $(CMAKE_COMMAND) -P CMakeFiles/core.dir/cmake_clean_target.cmake
 	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/core.dir/link.txt --verbose=$(VERBOSE)
 

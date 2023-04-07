@@ -175,29 +175,105 @@ maintest/fast:
 	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/maintest.dir/build.make examples/CMakeFiles/maintest.dir/build
 .PHONY : maintest/fast
 
-maintest.o: maintest.cpp.o
-.PHONY : maintest.o
+# Convenience name for target.
+examples/CMakeFiles/maintest1.dir/rule:
+	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/CMakeFiles/maintest1.dir/rule
+.PHONY : examples/CMakeFiles/maintest1.dir/rule
+
+# Convenience name for target.
+maintest1: examples/CMakeFiles/maintest1.dir/rule
+.PHONY : maintest1
+
+# fast build rule for target.
+maintest1/fast:
+	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/maintest1.dir/build.make examples/CMakeFiles/maintest1.dir/build
+.PHONY : maintest1/fast
+
+# Convenience name for target.
+examples/CMakeFiles/cpptest.dir/rule:
+	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/CMakeFiles/cpptest.dir/rule
+.PHONY : examples/CMakeFiles/cpptest.dir/rule
+
+# Convenience name for target.
+cpptest: examples/CMakeFiles/cpptest.dir/rule
+.PHONY : cpptest
+
+# fast build rule for target.
+cpptest/fast:
+	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/cpptest.dir/build.make examples/CMakeFiles/cpptest.dir/build
+.PHONY : cpptest/fast
+
+cppPractice.o: cppPractice.cpp.o
+.PHONY : cppPractice.o
 
 # target to build an object file
-maintest.cpp.o:
-	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/maintest.dir/build.make examples/CMakeFiles/maintest.dir/maintest.cpp.o
-.PHONY : maintest.cpp.o
+cppPractice.cpp.o:
+	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/cpptest.dir/build.make examples/CMakeFiles/cpptest.dir/cppPractice.cpp.o
+.PHONY : cppPractice.cpp.o
 
-maintest.i: maintest.cpp.i
-.PHONY : maintest.i
+cppPractice.i: cppPractice.cpp.i
+.PHONY : cppPractice.i
 
 # target to preprocess a source file
-maintest.cpp.i:
-	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/maintest.dir/build.make examples/CMakeFiles/maintest.dir/maintest.cpp.i
-.PHONY : maintest.cpp.i
+cppPractice.cpp.i:
+	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/cpptest.dir/build.make examples/CMakeFiles/cpptest.dir/cppPractice.cpp.i
+.PHONY : cppPractice.cpp.i
 
-maintest.s: maintest.cpp.s
-.PHONY : maintest.s
+cppPractice.s: cppPractice.cpp.s
+.PHONY : cppPractice.s
 
 # target to generate assembly for a file
-maintest.cpp.s:
-	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/maintest.dir/build.make examples/CMakeFiles/maintest.dir/maintest.cpp.s
-.PHONY : maintest.cpp.s
+cppPractice.cpp.s:
+	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/cpptest.dir/build.make examples/CMakeFiles/cpptest.dir/cppPractice.cpp.s
+.PHONY : cppPractice.cpp.s
+
+modernOpenglLearn.o: modernOpenglLearn.cpp.o
+.PHONY : modernOpenglLearn.o
+
+# target to build an object file
+modernOpenglLearn.cpp.o:
+	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/maintest1.dir/build.make examples/CMakeFiles/maintest1.dir/modernOpenglLearn.cpp.o
+.PHONY : modernOpenglLearn.cpp.o
+
+modernOpenglLearn.i: modernOpenglLearn.cpp.i
+.PHONY : modernOpenglLearn.i
+
+# target to preprocess a source file
+modernOpenglLearn.cpp.i:
+	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/maintest1.dir/build.make examples/CMakeFiles/maintest1.dir/modernOpenglLearn.cpp.i
+.PHONY : modernOpenglLearn.cpp.i
+
+modernOpenglLearn.s: modernOpenglLearn.cpp.s
+.PHONY : modernOpenglLearn.s
+
+# target to generate assembly for a file
+modernOpenglLearn.cpp.s:
+	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/maintest1.dir/build.make examples/CMakeFiles/maintest1.dir/modernOpenglLearn.cpp.s
+.PHONY : modernOpenglLearn.cpp.s
+
+openglLearn.o: openglLearn.cpp.o
+.PHONY : openglLearn.o
+
+# target to build an object file
+openglLearn.cpp.o:
+	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/maintest.dir/build.make examples/CMakeFiles/maintest.dir/openglLearn.cpp.o
+.PHONY : openglLearn.cpp.o
+
+openglLearn.i: openglLearn.cpp.i
+.PHONY : openglLearn.i
+
+# target to preprocess a source file
+openglLearn.cpp.i:
+	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/maintest.dir/build.make examples/CMakeFiles/maintest.dir/openglLearn.cpp.i
+.PHONY : openglLearn.cpp.i
+
+openglLearn.s: openglLearn.cpp.s
+.PHONY : openglLearn.s
+
+# target to generate assembly for a file
+openglLearn.cpp.s:
+	cd /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/maintest.dir/build.make examples/CMakeFiles/maintest.dir/openglLearn.cpp.s
+.PHONY : openglLearn.cpp.s
 
 # Help Target
 help:
@@ -211,10 +287,18 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... cpptest"
 	@echo "... maintest"
-	@echo "... maintest.o"
-	@echo "... maintest.i"
-	@echo "... maintest.s"
+	@echo "... maintest1"
+	@echo "... cppPractice.o"
+	@echo "... cppPractice.i"
+	@echo "... cppPractice.s"
+	@echo "... modernOpenglLearn.o"
+	@echo "... modernOpenglLearn.i"
+	@echo "... modernOpenglLearn.s"
+	@echo "... openglLearn.o"
+	@echo "... openglLearn.i"
+	@echo "... openglLearn.s"
 .PHONY : help
 
 

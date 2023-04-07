@@ -9,6 +9,7 @@ include_directories(${INCLUDES})
 
 add_library(core ${main_SRC})
 
+
 target_include_directories(core PUBLIC
         ${INCLUDES})
 
@@ -29,9 +30,7 @@ target_link_libraries(core glfw)
 
 
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../thirdparty/glew-2.2.0/build/cmake" "${CMAKE_CURRENT_SOURCE_DIR}/../thirdparty/glew-2.2.0/build/" EXCLUDE_FROM_ALL)
-target_include_directories(core PRIVATE
-  ${CMAKE_CURRENT_SOURCE_DIR}/../thirdparty/glew-2.2.0/include
-)
+target_link_libraries(core glew)
 
 #find_package(glfw3 REQUIRED)
 #if (glfw3_FOUND)
