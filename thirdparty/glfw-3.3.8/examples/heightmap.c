@@ -467,8 +467,8 @@ int main(int argc, char** argv)
     init_map();
     make_mesh(shader_program);
 
-    /* Create vao + vbo to store the mesh */
-    /* Create the vbo to store all the information for the grid and the height */
+    /* Create vao + vbo&vao to store the mesh */
+    /* Create the vbo&vao to store all the information for the grid and the height */
 
     /* setup the scene ready for rendering */
     glfwGetFramebufferSize(window, &width, &height);

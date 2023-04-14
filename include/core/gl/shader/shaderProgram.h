@@ -7,12 +7,12 @@
 #include "GL/glew.h"
 #include "GLFW/glfw3.h"
 #include <iostream>
+#include "utilz/io/fileReaders.h"
+
 
 
 class ShaderProgram{
 private:
-
-    virtual void abstract() = 0;
     unsigned int compileShader(const char* pathToShader,unsigned int type);
 
 protected:
@@ -27,25 +27,27 @@ protected:
      */
     unsigned int programId;
 
-    ShaderProgram(const char* vertexShader,
-                  const char* fragmentShader);
 
 public:
+    ShaderProgram(const char* vertexShader,
+                  const char* fragmentShader);
+    ~ShaderProgram();
     /**
      * Shaders initialization functions
      */
      void initProgram();
+
      void createShaders();
 
+     void activateProgram();
     /**
      * Getters functions
      * @return
      */
     bool isVertexShader();
-    bool isFragmentShader();
 
+    bool isFragmentShader();
 protected:
-    virtual ~ShaderProgram();
 
 public:
 };

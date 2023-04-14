@@ -5,17 +5,19 @@ add_executable(maintest1 modernOpenglLearn.cpp)
 
 add_executable(cpptest cppPractice.cpp)
 
+
+
 target_link_libraries(maintest1
         PRIVATE
-        core)
+        lenoEngineProgram)
 
 
 target_link_libraries(maintest
         PRIVATE
-        core)
+        lenoEngineProgram)
 
 target_link_libraries(cpptest
         PRIVATE
-        core)
+        lenoEngineProgram)
 
 

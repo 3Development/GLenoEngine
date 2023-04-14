@@ -1,25 +1,6 @@
 <h1>Opengl description</h1>
 
 
-TABLE 2.2 Colors
-TABLE 2.2 Some Common Composite Colors
-Composite color  Red Green Blue
-Black 0.0 0.0 0.0
-Red 1.0 0.0 0.0
-Green 0.0 1.0 0.0
-Yellow 1.0 1.0 0.0
-Blue 0.0 0.0 1.0
-Magenta 1.0 0.0 1.0
-Cyan 0.0 1.0 1.0
-Dark gray 0.25 0.25 0.25
-Light gray 0.75 0.75 0.75
-Brown 0.60 0.40 0.12
-Pumpkin orange 0.98 0.625 0.12
-Pastel pink 0.98 0.04 0.7
-Barney purple 0.60 0.40 0.70
-White 1.0 1.0 1.0
-
-
 **Types**
 GLclampf -> is defined as float under most implementations of OpenGl 
 
@@ -45,3 +26,22 @@ GLclampf -> is defined as float under most implementations of OpenGl
 
 
     glFlush() ->    This function casues any unexecuted OpenGLc commands to be executed. 
+
+    glGenBuffers() -> returns a newly generated/allocated id of memory location. 
+
+    glGenVertexArrays() -> returns a newly generated/allocated vao
+
+
+
+<h1>VAO vs VBO</h1>
+VBO is just a buffer, array of bytes.
+VAO is just a template,specification that tells us who to use bytes in VBO
+
+Example
+| 0 	| VBO 	| POSTION 	|
+|---	|---	|---	|
+| 1 	| VBO 	| COLOR 	|
+| 2 	| VBO 	| TEXTURE 	|
+| 3 	| VBO 	| NORMALS 	|
+
+One VAO containing multiple vbo's

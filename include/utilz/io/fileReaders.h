@@ -8,6 +8,7 @@
 #include <fstream>
 #include <string.h>
 
-const char* readFile(const char* path);
+int readFile(const char* path,char* buffer);
+int getSizeOfFile(const char* path);
 
 #endif //LENOENGINE_FILEREADERS_H

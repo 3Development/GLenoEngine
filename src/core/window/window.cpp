@@ -25,9 +25,6 @@
     */
 
 #include "core/window/window.h"
-#include "GL/glew.h"
-#include "GLFW/glfw3.h"
-#include <iostream>
 #define GLFW_INCLUDE_GL_3
 using namespace std;
 

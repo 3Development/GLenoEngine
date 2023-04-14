@@ -3,6 +3,8 @@
 #include <iostream>
 #include <thread>
 
+
+
 void renderScene(float value){
     glClear(GL_COLOR_BUFFER_BIT);
     glClearColor(0.0f,1.0f,1.0f,1.0f);

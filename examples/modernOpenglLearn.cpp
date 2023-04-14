@@ -2,11 +2,14 @@
 #include "GLFW/glfw3.h"
 #include <iostream>
 #include <thread>
+#include "core/gl/shader/shaderProgram.h"
+#include <filesystem>
+#include "yaml-cpp/yaml.h"
 
 
 void renderScene(float value){
     glClear(GL_COLOR_BUFFER_BIT);
-    glDrawArrays(GL_TRIANGLES,0,3);
+    glDrawElements(GL_TRIANGLES,6,GL_UNSIGNED_INT,nullptr);
 }
 
 
@@ -62,7 +65,7 @@ void test(float* value){
     }
 }
 
-int main(){
+void test1(){
     if (!glfwInit())
     {
         // Initialization failed
@@ -92,8 +95,8 @@ int main(){
     unsigned int buffer;
     float positions[6] = {
             -0.5f,-0.5f,
-                 0.0f,0.5f,
-                 0.5f,-0.5f
+            0.0f,0.5f,
+            0.5f,-0.5f
     };
     glGenBuffers(1,&buffer);
 
@@ -118,13 +121,13 @@ int main(){
 
 
     std::string fragmentShader = "#version 330 core\n"
-                               "\n"
-                               "out vec4 color;\n"
-                               "void main(){\n"
-                               " color = vec4(1.0,0.0,1.0,1.0);\n"
-                               ""
-                               ""
-                               "}\n";
+                                 "\n"
+                                 "out vec4 color;\n"
+                                 "void main(){\n"
+                                 " color = vec4(1.0,0.5,1.0,1.0);\n"
+                                 ""
+                                 ""
+                                 "}\n";
     unsigned int shader = CreateShader(vertexShader,fragmentShader);
 
     glUseProgram(shader);
@@ -135,4 +138,109 @@ int main(){
         glfwPollEvents();
         glfwSwapBuffers(window);
     }
+}
+
+void test2(){
+    YAML::Node config = YAML::LoadFile("/home/leno/DevelopmentCenter/Projects/GameDev/Engines/LenoEngine/GLenoEngine/properties/engine_properties.yaml");
+
+    if (!glfwInit())
+    {
+        // Initialization failed
+        std::cout<<"Helldsadsao word!l"<<std::endl;
+    }
+
+    // Open buffer window and create its OpenGL context
+    //Using buffer field of class window, this one will store the pointer to the window
+    GLFWwindow* window = glfwCreateWindow( 1024, 768, "Tutorial 01", NULL, NULL);
+
+    if(window == NULL){
+        glfwTerminate();
+    }
+
+    float value = -0.5f;
+    std::thread first(test,&value);
+    first.detach();
+
+    glfwMakeContextCurrent(window);
+
+
+    glewExperimental=true;
+    if(glewInit() != GLEW_OK){
+        std::cout<<"Glew not initialized "<<std::endl;
+    }
+
+    unsigned int vao;// GENERATE VAO WHICH WILL CONTAIN LAYOUT SPECIFICS FOR BUFFERS
+    glGenVertexArrays(1,&vao);
+    glBindVertexArray(vao);
+
+    unsigned int buffer;
+    float positions[8] = {
+            -0.5f,-0.5f, //0
+            0.5f,0.5f, // 1
+            0.5f,-0.5f, // 2
+            -0.5f,0.5f, // 3
+    };
+    int indices[]={
+            0,1,2,
+            0,3,1
+    };
+
+
+
+    glGenBuffers(1,&buffer);
+    glBindBuffer(GL_ARRAY_BUFFER,buffer);
+    glBufferData(GL_ARRAY_BUFFER,6*2 * sizeof(float),positions,GL_STATIC_DRAW);
+
+
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0,2,GL_FLOAT,GL_FALSE,sizeof(float) * 2,(const void*)0);
+
+
+    float color[24] = {
+            1,0,0,1,
+            0.5,1,0.5,1,
+            0,0,0,1,
+
+            1,0,0,1,
+            0.5,1,0.5,1,
+            0,0,0,1,
+    };
+    unsigned int colorBuffer;
+    glGenBuffers(1,&colorBuffer);
+    glBindBuffer(GL_ARRAY_BUFFER,colorBuffer); // aktiviramo buffer
+    glBufferData(GL_ARRAY_BUFFER,sizeof(float) * 4 * 3*2,color,GL_STATIC_DRAW);
+
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1,4,GL_FLOAT,GL_FALSE,sizeof(float) * 4,(const void*) 0);
+
+    unsigned int ibo;
+
+    glGenBuffers(1,&ibo);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,ibo);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER,sizeof(int) * 6 , indices,GL_STATIC_DRAW);
+
+    std::string root = std::string(config["resourceRootDir"].as<std::string>());
+    std::string vertex = std::string(root).append("shaders/basic/basicShader.vert");
+    std::string fragment = std::string(root).append("shaders/basic/basicShader.frag");
+
+    ShaderProgram shaderProgram(vertex.c_str(),fragment.c_str());
+
+    shaderProgram.initProgram();
+
+    shaderProgram.createShaders();
+
+    shaderProgram.activateProgram();
+
+    std::cout<<glGetString(GL_VERSION)<<std::endl;
+    std::cout<<"Running"<<std::endl;
+    while(!glfwWindowShouldClose(window)){
+        renderScene(value);
+        glfwPollEvents();
+        glfwSwapBuffers(window);
+    }
+
+}
+
+int main(){
+    test2();
 }
