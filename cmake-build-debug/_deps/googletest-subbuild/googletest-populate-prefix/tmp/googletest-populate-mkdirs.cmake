@@ -4,19 +4,19 @@
 cmake_minimum_required(VERSION 3.5)
 
 file(MAKE_DIRECTORY
-  "/home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/_deps/googletest-src"
-  "/home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/_deps/googletest-build"
-  "/home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix"
-  "/home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/tmp"
-  "/home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp"
-  "/home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src"
-  "/home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp"
+  "/home/leno/DevelopmentCenter/Projects/GameDev/Engines/LenoEngine/GLenoEngine/cmake-build-debug/_deps/googletest-src"
+  "/home/leno/DevelopmentCenter/Projects/GameDev/Engines/LenoEngine/GLenoEngine/cmake-build-debug/_deps/googletest-build"
+  "/home/leno/DevelopmentCenter/Projects/GameDev/Engines/LenoEngine/GLenoEngine/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix"
+  "/home/leno/DevelopmentCenter/Projects/GameDev/Engines/LenoEngine/GLenoEngine/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/tmp"
+  "/home/leno/DevelopmentCenter/Projects/GameDev/Engines/LenoEngine/GLenoEngine/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp"
+  "/home/leno/DevelopmentCenter/Projects/GameDev/Engines/LenoEngine/GLenoEngine/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src"
+  "/home/leno/DevelopmentCenter/Projects/GameDev/Engines/LenoEngine/GLenoEngine/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "/home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/${subDir}")
+    file(MAKE_DIRECTORY "/home/leno/DevelopmentCenter/Projects/GameDev/Engines/LenoEngine/GLenoEngine/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "/home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "/home/leno/DevelopmentCenter/Projects/GameDev/Engines/LenoEngine/GLenoEngine/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp${cfgdir}") # cfgdir has leading slash
 endif()

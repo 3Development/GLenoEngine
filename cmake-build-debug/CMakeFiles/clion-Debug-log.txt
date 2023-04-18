@@ -1,38 +1,9 @@
-/home/leno/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/223.8617.54/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -S /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1 -B /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug
--- The CXX compiler identification is GNU 12.2.1
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Check for working CXX compiler: /usr/bin/c++ - skipped
--- Detecting CXX compile features
--- Detecting CXX compile features - done
--- The C compiler identification is GNU 12.2.1
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Check for working C compiler: /usr/bin/cc - skipped
--- Detecting C compile features
--- Detecting C compile features - done
--- Found X11: /usr/include   
--- Looking for XOpenDisplay in /usr/lib64/libX11.so;/usr/lib64/libXext.so
--- Looking for XOpenDisplay in /usr/lib64/libX11.so;/usr/lib64/libXext.so - found
--- Looking for gethostbyname
--- Looking for gethostbyname - found
--- Looking for connect
--- Looking for connect - found
--- Looking for remove
--- Looking for remove - found
--- Looking for shmat
--- Looking for shmat - found
--- Looking for IceConnectionNumber in ICE
--- Looking for IceConnectionNumber in ICE - found
+/home/leno/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/leno/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/ninja/linux/x64/ninja -G Ninja -S /home/leno/DevelopmentCenter/Projects/GameDev/Engines/LenoEngine/GLenoEngine -B /home/leno/DevelopmentCenter/Projects/GameDev/Engines/LenoEngine/GLenoEngine/cmake-build-debug
 X11 Found
--- Found OpenGL: /usr/lib64/libOpenGL.so   
--- Performing Test CMAKE_HAVE_LIBC_PTHREAD
--- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
--- Found Threads: TRUE  
--- Found Doxygen: /usr/bin/doxygen (found version "1.9.5") found components: doxygen 
+-- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
 -- Using X11 for window creation
--- Found Python: /usr/bin/python3.11 (found version "3.11.2") found components: Interpreter 
+-- Found Python: /usr/bin/python3.11 (found version "3.11.3") found components: Interpreter 
 PROJECT_NAME = LenoEngine
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/cmake-build-debug
+-- Build files have been written to: /home/leno/DevelopmentCenter/Projects/GameDev/Engines/LenoEngine/GLenoEngine/cmake-build-debug

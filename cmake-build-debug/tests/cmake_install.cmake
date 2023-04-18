@@ -1,4 +1,4 @@
-# Install script for directory: /home/leno/DevelopmentCenter/Projects/GameDev/GameEngines/LenoEngine/v1/tests
+# Install script for directory: /home/leno/DevelopmentCenter/Projects/GameDev/Engines/LenoEngine/GLenoEngine/tests
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

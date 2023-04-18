@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "/home/leno/DevelopmentCenter/Projects/GameDev/Engines/LenoEngine/GLenoEngine/thirdparty/glfw-3.3.8/build/tests",
+		"source" : "thirdparty/glfw-3.3.8/tests"
+	}
+}

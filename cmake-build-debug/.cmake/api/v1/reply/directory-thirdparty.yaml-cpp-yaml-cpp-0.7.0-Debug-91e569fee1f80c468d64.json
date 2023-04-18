@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "/home/leno/DevelopmentCenter/Projects/GameDev/Engines/LenoEngine/GLenoEngine/thirdparty/yaml-cpp-yaml-cpp-0.7.0/build",
+		"source" : "thirdparty/yaml-cpp-yaml-cpp-0.7.0"
+	}
+}
