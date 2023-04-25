@@ -9,7 +9,7 @@ unzip glew-2.2.0
 #remove unzip
 rm glew-2.2.0.zip
 #build the project
-cd glew-2.2.0 && sudo make && sudo make install && sudo make clean
+(cd glew-2.2.0 && sudo make && sudo make install && sudo make clean)
 
 
 #Delete folder if exists
@@ -21,7 +21,7 @@ unzip glfw-3.3.8
 #remove unzip
 rm glfw-3.3.8.zip
 #build the project
-cd glfw-3.3.8 && mkdir build && cd build && cmake .. && make
+(cd glfw-3.3.8 && mkdir build && cd build && cmake .. && make)
 
 
 #Delete folder if exists
@@ -33,4 +33,4 @@ unzip yaml-cpp-0.7.0.zip
 #remove unzip
 rm yaml-cpp-0.7.0.zip
 #build the project
-cd yaml-cpp-yaml-cpp-0.7.0 && mkdir build && cd build && cmake [-G generator] [-DYAML_BUILD_SHARED_LIBS=OFF] ..
+(cd yaml-cpp-yaml-cpp-0.7.0 && mkdir build && cd build && cmake [-G generator] [-DYAML_BUILD_SHARED_LIBS=OFF] ..)

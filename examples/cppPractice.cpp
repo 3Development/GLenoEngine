@@ -8,13 +8,28 @@ using namespace std;
 struct test{
     int a;
     int b;
+    int c;
 };
 
 
-void function(void* dest){
-    test a{.a=1,.b=2};
-    int sizeOfPointer = 8;
+struct B{
+    int a;
+    test t[5];
+};
 
+
+
+void testSizeOfArray(){
+    float positions[8]={
+            1,2,3,4,5,6,7,8
+    };
+    std::cout<<sizeof(short)<<std::endl;
+
+}
+
+void function(void* dest){
+    test a{.a=1,.b=2,.c=34};
+    int sizeOfPointer = 8;
 
 
     memcpy(dest,&a,sizeof(a));
@@ -35,17 +50,14 @@ void testCopy(){
         ++index;
         ++size;
     }
+}
 
+
+void kl(){
+    std::cout<<sizeof(B)<<std::endl;
 }
 
 int main(){
-    void* dest = alloca(1000000);
-
-
-    function(dest);
-
-    test* a = (test*)dest;
-
-    std::cout<<a->b<<std::endl;
+    kl();
     return 0;
 }

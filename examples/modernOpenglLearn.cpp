@@ -1,10 +1,10 @@
-#include "GL/glew.h"
-#include "GLFW/glfw3.h"
+
 #include <iostream>
 #include <thread>
 #include "core/gl/shader/shaderProgram.h"
 #include <filesystem>
 #include "yaml-cpp/yaml.h"
+#include "core/gl/vbo&vao/vaoVbo.h"
 
 
 void renderScene(float value){
@@ -141,7 +141,7 @@ void test1(){
 }
 
 void test2(){
-    YAML::Node config = YAML::LoadFile("/home/leno/DevelopmentCenter/Projects/GameDev/Engines/LenoEngine/GLenoEngine/properties/engine_properties.yaml");
+    YAML::Node config = YAML::LoadFile("/home/leno/DevelopmentCenter/Projects/GameDev/Engines/GLenoEngine/properties/engine_properties.yaml");
 
     if (!glfwInit())
     {
@@ -241,6 +241,100 @@ void test2(){
 
 }
 
+void test3(){
+    YAML::Node config = YAML::LoadFile("/home/leno/DevelopmentCenter/Projects/GameDev/Engines/GLenoEngine/properties/engine_properties.yaml");
+
+    if (!glfwInit())
+    {
+        // Initialization failed
+        std::cout<<"Helldsadsao word!l"<<std::endl;
+    }
+
+    // Open buffer window and create its OpenGL context
+    //Using buffer field of class window, this one will store the pointer to the window
+    GLFWwindow* window = glfwCreateWindow( 1024, 768, "Tutorial 01", NULL, NULL);
+
+    if(window == NULL){
+        glfwTerminate();
+    }
+
+    float value = -0.5f;
+    std::thread first(test,&value);
+    first.detach();
+
+    glfwMakeContextCurrent(window);
+
+
+    glewExperimental=true;
+    if(glewInit() != GLEW_OK){
+        std::cout<<"Glew not initialized "<<std::endl;
+    }
+
+
+    void* vao5= alloca(sizeof(VAO_5));
+
+    initializeVao5Object(vao5,false);
+
+
+    VAO_5 vao5C=*(VAO_5*)vao5;
+
+
+    float positions[8] = {
+            -0.5f,-0.5f, //0
+            0.5f,0.5f, // 1
+            0.5f,-0.5f, // 2
+            -0.5f,0.5f, // 3
+    };
+    int indices[]={
+            0,1,2,
+            0,3,1
+    };
+
+
+    float color[24] = {
+            1,0,0.2,1,
+            0.3,1,0.2,1,
+            0,0,0,1,
+
+            1,0,0,1,
+            0.5,1,0.5,1,
+            0,0,0,1,
+    };
+    try{
+        initializeVboObjectAndBufferData(&vao5C, positions,sizeof(float)*8 ,GL_ARRAY_BUFFER,GL_FLOAT,VboVaoEnums::VboAttributeType::POSITION,0,2,sizeof(float)*2);
+        initializeVboObjectAndBufferData(&vao5C, color,sizeof(float)*24 ,GL_ARRAY_BUFFER,GL_FLOAT,VboVaoEnums::VboAttributeType::COLOR,1,4,sizeof(float)*4);
+        initializeVboObjectAndBufferData(&vao5C, indices,sizeof(float)*6 ,GL_ELEMENT_ARRAY_BUFFER,GL_FLOAT,VboVaoEnums::VboAttributeType::INDICES,-1,-1,-1);
+
+    }catch (VboVaoEnums::ErrorCodes e){
+        if (e == VboVaoEnums::VA0_NO_FREE_SLOT_IN_VBO_ARRAY){
+            std::cout<<"VAO_NO_FREE_SLOT_IN_VBO_ARRAY";
+            return;
+        }
+    }
+
+
+
+    std::string root = std::string(config["resourceRootDir"].as<std::string>());
+    std::string vertex = std::string(root).append("shaders/basic/basicShader.vert");
+    std::string fragment = std::string(root).append("shaders/basic/basicShader.frag");
+
+    ShaderProgram shaderProgram(vertex.c_str(),fragment.c_str());
+
+    shaderProgram.initProgram();
+
+    shaderProgram.createShaders();
+
+    shaderProgram.activateProgram();
+
+    std::cout<<glGetString(GL_VERSION)<<std::endl;
+    while(!glfwWindowShouldClose(window)){
+        renderScene(value);
+        glfwPollEvents();
+        glfwSwapBuffers(window);
+    }
+
+}
+
 int main(){
-    test2();
+    test3();
 }

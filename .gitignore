@@ -24,7 +24,7 @@ bld/
 # Add this line
 out/
 
-
+cmake-build-debug/
 build/
 .idea/
 .vscode/
