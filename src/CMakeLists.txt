@@ -24,7 +24,6 @@ endif(X11_FOUND)
 # OpenGL
 find_package(OpenGL REQUIRED)
 
-
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../thirdparty/glfw-3.3.8/" "${CMAKE_CURRENT_SOURCE_DIR}/../thirdparty/glfw-3.3.8/build" EXCLUDE_FROM_ALL)
 target_link_libraries(lenoEngineProgram glfw)
 
@@ -33,6 +32,10 @@ target_link_libraries(lenoEngineProgram glew)
 
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../thirdparty/yaml-cpp-yaml-cpp-0.7.0/" "${CMAKE_CURRENT_SOURCE_DIR}/../thirdparty/yaml-cpp-yaml-cpp-0.7.0/build/" EXCLUDE_FROM_ALL)
 target_link_libraries(lenoEngineProgram yaml-cpp)
+
+
+add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../thirdparty/glm/" "${CMAKE_CURRENT_SOURCE_DIR}/../thirdparty/glm/cmake/glm" EXCLUDE_FROM_ALL)
+target_link_libraries(lenoEngineProgram glm::glm)
 
 #find_package(glfw3 REQUIRED)
 #if (glfw3_FOUND)

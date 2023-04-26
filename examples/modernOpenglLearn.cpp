@@ -5,6 +5,7 @@
 #include <filesystem>
 #include "yaml-cpp/yaml.h"
 #include "core/gl/vbo&vao/vaoVbo.h"
+#include "utilz/math/linear_algebra/vector.h"
 
 
 void renderScene(float value){
@@ -243,7 +244,6 @@ void test2(){
 
 void test3(){
     YAML::Node config = YAML::LoadFile("/home/leno/DevelopmentCenter/Projects/GameDev/Engines/GLenoEngine/properties/engine_properties.yaml");
-
     if (!glfwInit())
     {
         // Initialization failed

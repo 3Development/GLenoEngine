@@ -21,17 +21,17 @@ enable_testing()
 
 
 
-set(TEST_FILES 
-    buildproject_test.cpp
-        ../include/core/window/window.h ../include/core/gl/shader/shaderProgram.h ../include/core/gl/vbo&vao/vaoVbo.h ../include/core/gl/enums/glenums.h)
-
-add_executable(tests ${TEST_FILES})
+add_executable(math_test utilz_tests/math_tests.cpp)
 
 
 target_link_libraries(
-  tests
-  GTest::gtest_main
+        math_test
+        GTest::gtest_main
+        lenoEngineProgram
 )
 
+
+
+
 include(GoogleTest)
-gtest_discover_tests(tests)
+gtest_discover_tests(math_test)
