@@ -5,7 +5,9 @@
 #include <filesystem>
 #include "yaml-cpp/yaml.h"
 #include "core/gl/vbo&vao/vaoVbo.h"
-#include "utilz/math/linear_algebra/vector.h"
+#include "utilz/math/linear_algebra/linear_functions/transformation_matrices.h"
+#include "glm/gtc/type_ptr.hpp"
+#include <glm/glm.hpp>
 
 
 void renderScene(float value){
@@ -326,13 +328,50 @@ void test3(){
 
     shaderProgram.activateProgram();
 
+    glm::mat4 modelMatrix(1.f);
+
+    modelMatrix = glm::translate(modelMatrix,glm::vec3(0.1,0,0));
+
+    Mat4x4 mat4X4;
+    Mat4x4 mat4X4translation;
+
+    initIdentityMatrix4x4(&mat4X4);
+    initIdentityMatrix4x4(&mat4X4translation);
+
+    Vec3 vec3Scale;
+    vec3Scale.x = 1;
+    vec3Scale.y = 1;
+    vec3Scale.z = 1;
+    createScaleMatrix4x4(&mat4X4,&vec3Scale);
+
+    int location= glGetUniformLocation(shaderProgram.getProgramId(),"translationMatrix");
+
+
+    glUniformMatrix4fv(location,1,GL_FALSE,&mat4X4.matrix[0]);
+
+
+    Vec3 vector3;
     std::cout<<glGetString(GL_VERSION)<<std::endl;
+    vector3.x=0.01;
+    float direction = 0.01;
     while(!glfwWindowShouldClose(window)){
         renderScene(value);
         glfwPollEvents();
         glfwSwapBuffers(window);
-    }
 
+        glUniformMatrix4fv(location,1,GL_FALSE,&mat4X4.matrix[0]);
+
+        createScaleMatrix4x4(&mat4X4,&vec3Scale);
+        createTranslationMatrix4x4(&mat4X4translation,&vector3);
+
+        Mat4x4 n = mat4X4 * &mat4X4translation;
+        glUniformMatrix4fv(location,1,GL_FALSE,&n.matrix[0]);
+        vec3Scale.y+=0.001f;
+        vector3.x+=0.0001f;
+
+
+
+    }
 }
 
 int main(){

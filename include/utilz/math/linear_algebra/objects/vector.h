@@ -4,12 +4,12 @@
 
 #ifndef LENOENGINE_VECTOR_H
 #define LENOENGINE_VECTOR_H
-#include "../enums/linearAlgebraEnums.h"
+#include "utilz/math/enums/linearAlgebraEnums.h"
 
 struct Vec3{
-    float x;
-    float y;
-    float z;
+    float x = 0;
+    float y = 0;
+    float z = 0;
 
     /**
      * Override a multiplication with scalar

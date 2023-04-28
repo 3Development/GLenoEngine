@@ -4,7 +4,9 @@
 
 #ifndef LENOENGINE_MATRIX_H
 #define LENOENGINE_MATRIX_H
-#include "vector.h"
+
+#include "./vector.h"
+#define SIZE_OF_MATRIX4_ARRAY 16
 
 /**
  * Matrix 4x4.
@@ -22,7 +24,7 @@
  *
  *         If A increase row then resulted Matrix will have one row extra. If matrix B increases colum then resulted matrix will have extra column
  */
-struct Mat4x4{
+struct Mat4x4Deprecated{
     float r1[4];
     float r2[4];
     float r3[4];
@@ -44,9 +46,8 @@ struct Mat4x4{
      * @param mat4X4
      * @return
      */
-    inline Mat4x4 operator *(Mat4x4 mat4X4){
-        Mat4x4 newMat4x4{};
-
+    inline Mat4x4Deprecated operator *(Mat4x4Deprecated mat4X4){
+        Mat4x4Deprecated newMat4x4{};
 
         newMat4x4.r1[0] = ((r1[0] * mat4X4.r1[0]) + (r1[1] * mat4X4.r2[0]) + (r1[2] * mat4X4.r3[0] ) + (r1[3] * mat4X4.r4[0])   ); // First row first column
         newMat4x4.r1[1] = ( (r1[0] * mat4X4.r1[1]) + (r1[1] * mat4X4.r2[1] ) + ( r1[2] * mat4X4.r3[1] ) + ( r1[3] * mat4X4.r4[1]) ); // First row second column
@@ -72,7 +73,52 @@ struct Mat4x4{
 
         return newMat4x4;
     }
+};
 
+
+/**
+ * Opengl requires the data to be in one dimensional array and
+ * it has to be column major, meaning if this is regular matrix
+ * row major
+ * [1 0 0 x]        [1 0 0 0]
+ * [0 1 0 y]    ->  [0 1 0 0]
+ * [0 0 1 z]        [0 0 1 0]
+ * [0 0 0 1]        [x y z 1]
+ *
+ */
+struct Mat4x4{
+    float matrix[SIZE_OF_MATRIX4_ARRAY]={0};
+
+    /**
+     * Matrix with matrix multiplication
+     *
+     *
+     *
+     *
+     * @param otherMat4x4 -> otherMat4x4 is one on the right side or B matrix in notation AxB
+     * @return
+     */
+    inline Mat4x4 operator * (Mat4x4* otherMat4x4){
+        Mat4x4 newMatrix{0};
+
+        int columnStartIndex = -1;
+        int rowStartIndex = -1;
+        for(int i = 0; i < SIZE_OF_MATRIX4_ARRAY; i++){
+
+            if( i % 4 == 0){
+                columnStartIndex = 0;
+                rowStartIndex +=1;
+            }
+
+            newMatrix.matrix[i] =  ( matrix[(rowStartIndex * 4) + 0  ] * otherMat4x4->matrix[ columnStartIndex ] ) + //Multiplying first row first column with first row first column
+                                   ( matrix[(rowStartIndex * 4) + 1  ] * otherMat4x4->matrix[ columnStartIndex + 4 ] ) +
+                                   ( matrix[(rowStartIndex * 4) + 2  ] * otherMat4x4->matrix[ columnStartIndex + 8 ] ) +
+                                   ( matrix[(rowStartIndex * 4) + 3  ] * otherMat4x4->matrix[ columnStartIndex + 12 ] ) ;
+
+            columnStartIndex +=1;
+        }
+        return newMatrix;
+    }
 };
 
 

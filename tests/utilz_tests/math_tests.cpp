@@ -1,10 +1,10 @@
 //
 // Created by leno on 25.04.23..
 //
-#include "utilz/math/linear_algebra/vector.h"
+#include "utilz/math/linear_algebra/objects/vector.h"
 #include "../coreTestHeader.h"
-#include "utilz/math/linear_algebra/matrix.h"
-
+#include "utilz/math/linear_algebra/objects/matrix.h"
+#include "utilz/math/linear_algebra/linear_functions/transformation_matrices.h"
 /**
  * VECTORS TESTS
  */
@@ -137,8 +137,8 @@ TEST(VectorTests, CheckIfVec3DotProductIsWorking){
  * Checks if multiply of two 4x4 matrix is working
  */
 TEST(VectorTests, CheckiIf4X4matMultiplicationIsWorking){
-    TEST_DESCRIPTION("Checks if 4x4 matrix multiplication is working","CheckiIf4X4matMultiplicationIsWorking")
-    Mat4x4 mat4X4A{};
+    TEST_DESCRIPTION("Checks if 4x4 matrix multiplication is working - DEPRECATED TEST","CheckiIf4X4matMultiplicationIsWorking")
+    Mat4x4Deprecated mat4X4A{};
 
     mat4X4A.r1[0] = 1;
     mat4X4A.r1[1] = 2;
@@ -161,7 +161,7 @@ TEST(VectorTests, CheckiIf4X4matMultiplicationIsWorking){
     mat4X4A.r4[3] = 16;
 
 
-    Mat4x4 mat4X4B{};
+    Mat4x4Deprecated mat4X4B{};
 
     mat4X4B.r1[0] = 5;
     mat4X4B.r1[1] = 6;
@@ -185,7 +185,7 @@ TEST(VectorTests, CheckiIf4X4matMultiplicationIsWorking){
 
 
 
-    Mat4x4 result = mat4X4A * mat4X4B;
+    Mat4x4Deprecated result = mat4X4A * mat4X4B;
 
     ASSERT_EQ(result.r1[0],130);
     ASSERT_EQ(result.r1[1],140);
@@ -221,6 +221,54 @@ TEST(MathFunctions, CheckResultOfDotProductArrays){
 
     ASSERT_EQ(result,32);
 }
+
+
+/**
+ * Check if identity matrix is properly built
+ */
+TEST(MathFunctions, CheckIfIdentityMatrixIsInitializedProperly){
+    TEST_DESCRIPTION("Check if identity matrix is initialized properly","CheckIfIdentityMatrixIsInitializedProperly")
+    Mat4x4 matrix{};
+
+    initIdentityMatrix4x4(&matrix);
+
+}
+
+
+/**
+ * Check if identity matrix is properly built
+ */
+TEST(MathFunctions, CheckScalarMatrixMultiplicationWithTranslation_COLUMN_ROW){
+    TEST_DESCRIPTION("","CheckScalarMatrixMultiplicationWithTranslation_COLUMN_ROW")
+    Mat4x4 matrixA{};
+    Mat4x4 matrixB{};
+
+    Vec3 translation{.x=5,.y=2,.z=3};
+    Vec3 scalar{.x=2,.y=2,.z=2};
+
+    initIdentityMatrix4x4(&matrixA);
+    initIdentityMatrix4x4(&matrixB);
+
+    createTranslationMatrix4x4(&matrixA,&translation);
+    createScaleMatrix4x4(&matrixB,&scalar);
+
+    Mat4x4 newMatrix = matrixB * &matrixA;
+
+
+    float correctArray[16] = {
+            2,0,0,0,
+            0,2,0,0,
+            0,0,2,0,
+            5,2,3,1
+    };
+
+    for(int i = 0; i < 16;++i){
+        ASSERT_EQ(correctArray[i],newMatrix.matrix[i]);
+    }
+
+
+}
+
 
 
 /**

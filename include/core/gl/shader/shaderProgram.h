@@ -47,9 +47,12 @@ public:
     bool isVertexShader();
 
     bool isFragmentShader();
+
+    unsigned int getProgramId();
+
 protected:
 
-public:
+
 };
 
 #endif //LENOENGINE_SHADERPROGRAM_H

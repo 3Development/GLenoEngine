@@ -6,7 +6,7 @@ file(GLOB INCLUDES "${CMAKE_CURRENT_SOURCE_DIR}/../include")
 include_directories(${INCLUDES})
 
 
-add_library(lenoEngineProgram ${main_SRC} core/gl/vbo&vao/vaoVbo.cpp)
+add_library(lenoEngineProgram ${main_SRC})
 
 
 target_include_directories(lenoEngineProgram PUBLIC

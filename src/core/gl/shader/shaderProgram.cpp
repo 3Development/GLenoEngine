@@ -106,6 +106,14 @@ bool ShaderProgram::isVertexShader() {
     return vertexShader != nullptr;
 }
 
+/**
+ * Get id of program
+ * @return
+ */
+unsigned int ShaderProgram::getProgramId() {
+    return programId;
+}
+
 
 
 
