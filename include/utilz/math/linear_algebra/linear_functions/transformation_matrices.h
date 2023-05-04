@@ -6,6 +6,8 @@
 #define LENOENGINE_TRANSFORMATION_MATRICES_H
 #include "../objects/matrix.h"
 #include "../objects/vector.h"
+#include <cmath>
+
 
 /**
  * MATRIX4x4 TRANSFORMATIONS
@@ -32,5 +34,18 @@ void createTranslationMatrix4x4(Mat4x4* mat4X4,Vec3* vec3);
  * a scale matrix
  */
 void createScaleMatrix4x4(Mat4x4* mat4X4, Vec3* vec3);
+
+
+/**
+ * Creating perspective matrix.
+ * This matrix helps that objects that are further to make them smaller and closer to center.
+ * @param mat4X4
+ * @param width
+ * @param height
+ * @param fovDegree
+ * @param zNear
+ * @param zFar
+ */
+void createPerspectiveMatrix4x4(Mat4x4* mat4X4,float width,float height,float fovDegree,float zNear,float zFar);
 
 #endif //LENOENGINE_TRANSFORMATION_MATRICES_H

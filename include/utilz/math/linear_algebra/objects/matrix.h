@@ -90,26 +90,24 @@ struct Mat4x4{
     float matrix[SIZE_OF_MATRIX4_ARRAY]={0};
 
     /**
+     * Additional description -> http://localhost:63342/LenoEngine/documentation/code/src/utilz/math/objects/Mat4x4MultiplicationWithMat4x4.png
+     *
      * Matrix with matrix multiplication
-     *
-     *
-     *
      *
      * @param otherMat4x4 -> otherMat4x4 is one on the right side or B matrix in notation AxB
      * @return
      */
     inline Mat4x4 operator * (Mat4x4* otherMat4x4){
         Mat4x4 newMatrix{0};
-
         int columnStartIndex = -1;
         int rowStartIndex = -1;
-        for(int i = 0; i < SIZE_OF_MATRIX4_ARRAY; i++){
+        for(int i = 0; i < SIZE_OF_MATRIX4_ARRAY; i++){ // Going trough all positions in matrix, meaning all 16
 
-            if( i % 4 == 0){
+            if( i % 4 == 0){ // If i == 4, that means we need to go to next row and reset column index
                 columnStartIndex = 0;
                 rowStartIndex +=1;
             }
-
+                                   // This first number is first number in row   Since columns always repeat this represents the first number in first column
             newMatrix.matrix[i] =  ( matrix[(rowStartIndex * 4) + 0  ] * otherMat4x4->matrix[ columnStartIndex ] ) + //Multiplying first row first column with first row first column
                                    ( matrix[(rowStartIndex * 4) + 1  ] * otherMat4x4->matrix[ columnStartIndex + 4 ] ) +
                                    ( matrix[(rowStartIndex * 4) + 2  ] * otherMat4x4->matrix[ columnStartIndex + 8 ] ) +

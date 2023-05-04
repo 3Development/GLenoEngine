@@ -2789,8 +2789,8 @@ GLFWAPI void glfwSetWindowTitle(GLFWwindow* window, const char* title);
 /*! @brief Sets the icon for the specified window.
  *
  *  This function sets the icon of the specified window.  If passed an array of
- *  candidate images, those of or closest to the sizes desired by the system are
- *  selected.  If no images are specified, the window reverts to its default
+ *  candidate src, those of or closest to the sizes desired by the system are
+ *  selected.  If no src are specified, the window reverts to its default
  *  icon.
  *
  *  The pixels are 32-bit, little-endian, non-premultiplied RGBA, i.e. eight
@@ -2798,13 +2798,13 @@ GLFWAPI void glfwSetWindowTitle(GLFWwindow* window, const char* title);
  *  as packed sequential rows, starting from the top-left corner.
  *
  *  The desired image sizes varies depending on platform and system settings.
- *  The selected images will be rescaled as needed.  Good sizes include 16x16,
+ *  The selected src will be rescaled as needed.  Good sizes include 16x16,
  *  32x32 and 48x48.
  *
  *  @param[in] window The window whose icon to set.
- *  @param[in] count The number of images in the specified array, or zero to
+ *  @param[in] count The number of src in the specified array, or zero to
  *  revert to the default window icon.
- *  @param[in] images The images to create the icon from.  This is ignored if
+ *  @param[in] images The src to create the icon from.  This is ignored if
  *  count is zero.
  *
  *  @errors Possible errors include @ref GLFW_NOT_INITIALIZED, @ref
@@ -5774,7 +5774,7 @@ GLFWAPI const char** glfwGetRequiredInstanceExtensions(uint32_t* count);
  */
 GLFWAPI GLFWvkproc glfwGetInstanceProcAddress(VkInstance instance, const char* procname);
 
-/*! @brief Returns whether the specified queue family can present images.
+/*! @brief Returns whether the specified queue family can present src.
  *
  *  This function returns whether the specified queue family of the specified
  *  physical device supports presentation to the platform GLFW was built for.

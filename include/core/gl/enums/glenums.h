@@ -28,4 +28,13 @@ namespace VboVaoEnums{
 
 }
 
+namespace ShaderProgramEnums{
+
+
+    enum ErrorCodes : unsigned char{
+        PROGRAM_NOT_INITIALIZED,//When initProgram function was not called or it was called but program was not initalized
+        UNIFORM_LOCATION_INITIALIZATION_ERROR, //Error that occurs when uniform location was not found - calling function like glGetUniformLocation
+    };
+}
+
 #endif //LENOENGINE_GLENUMS_H

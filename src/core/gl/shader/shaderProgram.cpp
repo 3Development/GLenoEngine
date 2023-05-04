@@ -13,6 +13,7 @@ ShaderProgram::ShaderProgram(const char *vertexShader, const char *fragmentShade
         this->vertexShader = vertexShader;
         this->fragmentShader = fragmentShader;
     }
+    programId = 0;
 }
 
 /**
@@ -87,6 +88,25 @@ void ShaderProgram::activateProgram() {
 }
 
 
+/**
+ * Fetches location of uniform inside shader program
+ * @param name
+ * @param addressOfId
+ */
+void ShaderProgram::initUniformLocation(const char *name,int* addressOfId) {
+    if(programId == -1){
+        throw ShaderProgramEnums::ErrorCodes::PROGRAM_NOT_INITIALIZED;
+    }else{
+        *addressOfId = glGetUniformLocation(programId,name);
+
+        if(*addressOfId == GL_INVALID_VALUE || *addressOfId == GL_INVALID_OPERATION || *addressOfId == -1){
+            throw ShaderProgramEnums::ErrorCodes::UNIFORM_LOCATION_INITIALIZATION_ERROR;
+        }
+    }
+}
+
+
+
 //Functions ---- GETTERS AND CHECKERS ----------------------------
 
 /**
@@ -113,6 +133,11 @@ bool ShaderProgram::isVertexShader() {
 unsigned int ShaderProgram::getProgramId() {
     return programId;
 }
+
+const UniformsHolder *ShaderProgram::getUniformsHolder() {
+    return &uniformsHolder;
+}
+
 
 
 

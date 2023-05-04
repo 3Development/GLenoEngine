@@ -9,6 +9,21 @@
 #include "glm/gtc/type_ptr.hpp"
 #include <glm/glm.hpp>
 
+void GLAPIENTRY
+MessageCallback( GLenum source,
+                 GLenum type,
+                 GLuint id,
+                 GLenum severity,
+                 GLsizei length,
+                 const GLchar* message,
+                 const void* userParam )
+{
+    if(severity == GL_DEBUG_SEVERITY_HIGH || severity == GL_DEBUG_SEVERITY_MEDIUM){
+        fprintf( stderr, "GL CALLBACK: %s type = 0x%x, severity = 0x%x, message = %s\n",
+                 ( type == GL_DEBUG_TYPE_ERROR ? "** GL ERROR **" : "" ),
+                 type, severity, message );
+    }
+}
 
 void renderScene(float value){
     glClear(GL_COLOR_BUFFER_BIT);
@@ -272,6 +287,8 @@ void test3(){
         std::cout<<"Glew not initialized "<<std::endl;
     }
 
+    glEnable              ( GL_DEBUG_OUTPUT );
+    glDebugMessageCallback( MessageCallback, 0 );
 
     void* vao5= alloca(sizeof(VAO_5));
 
@@ -281,11 +298,11 @@ void test3(){
     VAO_5 vao5C=*(VAO_5*)vao5;
 
 
-    float positions[8] = {
-            -0.5f,-0.5f, //0
-            0.5f,0.5f, // 1
-            0.5f,-0.5f, // 2
-            -0.5f,0.5f, // 3
+    float positions[12] = {
+            -0.5f,-0.5f,0, //0
+            0.5f,0.5f,0, // 1
+            0.5f,-0.5f,0, // 2
+            -0.5f,0.5f,0 // 3
     };
     int indices[]={
             0,1,2,
@@ -303,7 +320,7 @@ void test3(){
             0,0,0,1,
     };
     try{
-        initializeVboObjectAndBufferData(&vao5C, positions,sizeof(float)*8 ,GL_ARRAY_BUFFER,GL_FLOAT,VboVaoEnums::VboAttributeType::POSITION,0,2,sizeof(float)*2);
+        initializeVboObjectAndBufferData(&vao5C, positions,sizeof(float)*12 ,GL_ARRAY_BUFFER,GL_FLOAT,VboVaoEnums::VboAttributeType::POSITION,0,3,sizeof(float)*3);
         initializeVboObjectAndBufferData(&vao5C, color,sizeof(float)*24 ,GL_ARRAY_BUFFER,GL_FLOAT,VboVaoEnums::VboAttributeType::COLOR,1,4,sizeof(float)*4);
         initializeVboObjectAndBufferData(&vao5C, indices,sizeof(float)*6 ,GL_ELEMENT_ARRAY_BUFFER,GL_FLOAT,VboVaoEnums::VboAttributeType::INDICES,-1,-1,-1);
 
@@ -328,9 +345,9 @@ void test3(){
 
     shaderProgram.activateProgram();
 
-    glm::mat4 modelMatrix(1.f);
 
-    modelMatrix = glm::translate(modelMatrix,glm::vec3(0.1,0,0));
+    glm::mat4 modelMatrix = glm::perspective(glm::radians(45.0f),1024.f/768.f,0.1f,300.0f);
+    glm::mat4 translation = glm::translate(modelMatrix,glm::vec3(0.1,0,1));
 
     Mat4x4 mat4X4;
     Mat4x4 mat4X4translation;
@@ -345,32 +362,33 @@ void test3(){
     createScaleMatrix4x4(&mat4X4,&vec3Scale);
 
     int location= glGetUniformLocation(shaderProgram.getProgramId(),"translationMatrix");
+    int projectionMatrix= glGetUniformLocation(shaderProgram.getProgramId(),"projectionMatrix");
 
 
     glUniformMatrix4fv(location,1,GL_FALSE,&mat4X4.matrix[0]);
 
 
     Vec3 vector3;
+    Mat4x4 projection;
+    createPerspectiveMatrix4x4(&projection,1024,768,45,2,500);
+
+    glUniformMatrix4fv(projectionMatrix,1,GL_FALSE,&projection.matrix[0]);
+
     std::cout<<glGetString(GL_VERSION)<<std::endl;
     vector3.x=0.01;
-    float direction = 0.01;
+    vector3.z=-105;
     while(!glfwWindowShouldClose(window)){
         renderScene(value);
         glfwPollEvents();
         glfwSwapBuffers(window);
 
-        glUniformMatrix4fv(location,1,GL_FALSE,&mat4X4.matrix[0]);
 
         createScaleMatrix4x4(&mat4X4,&vec3Scale);
         createTranslationMatrix4x4(&mat4X4translation,&vector3);
 
         Mat4x4 n = mat4X4 * &mat4X4translation;
-        glUniformMatrix4fv(location,1,GL_FALSE,&n.matrix[0]);
-        vec3Scale.y+=0.001f;
-        vector3.x+=0.0001f;
-
-
-
+        glUniformMatrix4fv(location,1,GL_FALSE,&mat4X4translation.matrix[0]);
+        vector3.z+=0.1f;
     }
 }
 

@@ -19,9 +19,13 @@ endif()
 #Define testing
 enable_testing()
 
+#COMPILE DEFINITIONS PROPERTIES
+add_compile_definitions(ENGINE_PROPERTIES_YAML="/home/leno/DevelopmentCenter/Projects/GameDev/Engines/GLenoEngine/properties/engine_properties.yaml")
+
 
 
 add_executable(math_test utilz_tests/math_tests.cpp)
+add_executable(shader_test opengl_tests/shader_tests.cpp)
 
 
 target_link_libraries(
@@ -30,8 +34,16 @@ target_link_libraries(
         lenoEngineProgram
 )
 
+target_link_libraries(
+        shader_test
+        GTest::gtest_main
+        lenoEngineProgram
+)
+
+
 
 
 
 include(GoogleTest)
 gtest_discover_tests(math_test)
+gtest_discover_tests(shader_test)

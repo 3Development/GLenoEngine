@@ -228,7 +228,7 @@ if (_GLFW_X11)
         message(FATAL_ERROR "XKB headers not found; install X11 development package")
     endif()
 
-    # Check for Xcursor (cursor creation from RGBA images)
+    # Check for Xcursor (cursor creation from RGBA src)
     if (NOT X11_Xcursor_INCLUDE_PATH)
         message(FATAL_ERROR "Xcursor headers not found; install libxcursor development package")
     endif()

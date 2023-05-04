@@ -136,7 +136,7 @@ TEST(VectorTests, CheckIfVec3DotProductIsWorking){
 /**
  * Checks if multiply of two 4x4 matrix is working
  */
-TEST(VectorTests, CheckiIf4X4matMultiplicationIsWorking){
+TEST(MatrixTests, CheckiIf4X4matMultiplicationIsWorking){
     TEST_DESCRIPTION("Checks if 4x4 matrix multiplication is working - DEPRECATED TEST","CheckiIf4X4matMultiplicationIsWorking")
     Mat4x4Deprecated mat4X4A{};
 

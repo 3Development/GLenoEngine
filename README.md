@@ -30,3 +30,10 @@ Dependencies<br>
     - make clean
 
 All of this instructions can be run with ./setupLinux script in thirdparty folder
+
+
+
+
+<h1>Tets</h1>
+
+Change the definition of ENGINE_PROPERTIES_YAML in cmake file in tests folder. This property should match your path to this project

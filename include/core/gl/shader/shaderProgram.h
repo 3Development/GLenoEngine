@@ -8,6 +8,8 @@
 #include "GLFW/glfw3.h"
 #include <iostream>
 #include "utilz/io/fileReaders.h"
+#include "uniformHolder.h"
+#include "../enums/glenums.h"
 
 
 
@@ -27,6 +29,10 @@ protected:
      */
     unsigned int programId;
 
+    /**
+     * uniforms holder
+     */
+     const UniformsHolder uniformsHolder;
 
 public:
     ShaderProgram(const char* vertexShader,
@@ -40,6 +46,9 @@ public:
      void createShaders();
 
      void activateProgram();
+
+     void initUniformLocation(const char* name,int* addressOfId);
+
     /**
      * Getters functions
      * @return
@@ -49,6 +58,8 @@ public:
     bool isFragmentShader();
 
     unsigned int getProgramId();
+
+    const UniformsHolder* getUniformsHolder();
 
 protected:
 
