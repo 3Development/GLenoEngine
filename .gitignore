@@ -28,3 +28,8 @@ cmake-build-debug/
 build/
 .idea/
 .vscode/
+
+thirdparty/glew-2.2.0
+thirdparty/glfw-3.3.8
+thirdparty/yaml-cpp-yaml-cpp-0.7.0
+
