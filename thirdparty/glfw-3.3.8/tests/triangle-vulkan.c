@@ -596,7 +596,7 @@ static void demo_prepare_buffers(struct demo *demo) {
     // width and height are either both 0xFFFFFFFF, or both not 0xFFFFFFFF.
     if (surfCapabilities.currentExtent.width == 0xFFFFFFFF) {
         // If the surface size is undefined, the size is set to the size
-        // of the images requested, which must fit within the minimum and
+        // of the src requested, which must fit within the minimum and
         // maximum values.
         swapchainExtent.width = demo->width;
         swapchainExtent.height = demo->height;
@@ -625,11 +625,11 @@ static void demo_prepare_buffers(struct demo *demo) {
     // Application desires to only acquire 1 image at a time (which is
     // "surfCapabilities.minImageCount").
     uint32_t desiredNumOfSwapchainImages = surfCapabilities.minImageCount;
-    // If maxImageCount is 0, we can ask for as many images as we want;
+    // If maxImageCount is 0, we can ask for as many src as we want;
     // otherwise we're limited to maxImageCount
     if ((surfCapabilities.maxImageCount > 0) &&
         (desiredNumOfSwapchainImages > surfCapabilities.maxImageCount)) {
-        // Application must settle for fewer images than desired:
+        // Application must settle for fewer src than desired:
         desiredNumOfSwapchainImages = surfCapabilities.maxImageCount;
     }
 
@@ -671,7 +671,7 @@ static void demo_prepare_buffers(struct demo *demo) {
     // If we just re-created an existing swapchain, we should destroy the old
     // swapchain at this point.
     // Note: destroying the swapchain also cleans up all its associated
-    // presentable images once the platform is done with them.
+    // presentable src once the platform is done with them.
     if (oldSwapchain != VK_NULL_HANDLE) {
         vkDestroySwapchainKHR(demo->device, oldSwapchain, NULL);
     }

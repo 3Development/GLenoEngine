@@ -3,7 +3,7 @@ project(LenoEngine)
 add_executable(maintest openglLearn.cpp)
 add_executable(maintest1 modernOpenglLearn.cpp)
 
-add_executable(cpptest cppPractice.cpp ../include/utilz/math/enums/linearAlgebraEnums.h ../include/utilz/math/linear_algebra/objects/matrix.h ../include/utilz/math/linear_algebra/linear_functions/transformation_matrices.h ../include/core/gl/shader/uniformHolder.h)
+add_executable(cpptest cppPractice.cpp ../include/utilz/math/enums/linearAlgebraEnums.h ../include/utilz/math/algebra/objects/matrix.h ../include/utilz/math/algebra/linear_functions/transformation_matrices.h ../include/core/gl/shader/uniformHolder.h)
 
 
 

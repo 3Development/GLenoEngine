@@ -58,7 +58,8 @@ TEST_F(ShaderTests, TestShaderUniformLocations){
 
 
 /**
- * Checks if initialization os shader program is working
+ * Checks if initialization os shader program is working. It should
+ * throw an error
  */
 TEST_F(ShaderTests, TestShaderUniformCheckIfThrowMessageOccurs){
     TEST_DESCRIPTION("Check if finding uniform will throw proper error when name of location is wrong","TestShaderUniformCheckIfThrowMessageOccurs");

@@ -13,12 +13,12 @@
 
 
 
-
+/**
+ * Creates a window context
+ */
 void initOpenGlWindowEmptyWindow(){
     if (!glfwInit())
     {
-        // Initialization failed
-        std::cout<<"Helldsadsao word!l"<<std::endl;
     }
 
     // Open buffer window and create its OpenGL context
@@ -36,7 +36,6 @@ void initOpenGlWindowEmptyWindow(){
     if(glewInit() != GLEW_OK){
         std::cout<<"Glew not initialized "<<std::endl;
     }
-
     glEnable( GL_DEBUG_OUTPUT );
 }
 

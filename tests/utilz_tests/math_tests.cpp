@@ -1,10 +1,12 @@
 //
 // Created by leno on 25.04.23..
 //
-#include "utilz/math/linear_algebra/objects/vector.h"
+#include "utilz/math/algebra//objects/vector.h"
 #include "../coreTestHeader.h"
-#include "utilz/math/linear_algebra/objects/matrix.h"
-#include "utilz/math/linear_algebra/linear_functions/transformation_matrices.h"
+#include "utilz/math/algebra//linear_functions/transformation_matrices.h"
+#include "utilz/math/algebra/objects/matrix.h"
+#include "utilz/math/algebra/objects/quaternion.h"
+
 /**
  * VECTORS TESTS
  */
@@ -213,7 +215,7 @@ TEST(MatrixTests, CheckiIf4X4matMultiplicationIsWorking){
  * SIMPLE MATH FUNCTIONS
  */
 
-TEST(MathFunctions, CheckResultOfDotProductArrays){
+TEST(MatrixTests, CheckResultOfDotProductArrays){
     TEST_DESCRIPTION("Calculate dot product of arrays","CheckResultOfDotProductArrays")
     float testa[3]={1,2,3};
     float testb[3]={4,5,6};
@@ -226,7 +228,7 @@ TEST(MathFunctions, CheckResultOfDotProductArrays){
 /**
  * Check if identity matrix is properly built
  */
-TEST(MathFunctions, CheckIfIdentityMatrixIsInitializedProperly){
+TEST(MatrixTests, CheckIfIdentityMatrixIsInitializedProperly){
     TEST_DESCRIPTION("Check if identity matrix is initialized properly","CheckIfIdentityMatrixIsInitializedProperly")
     Mat4x4 matrix{};
 
@@ -238,7 +240,7 @@ TEST(MathFunctions, CheckIfIdentityMatrixIsInitializedProperly){
 /**
  * Check if identity matrix is properly built
  */
-TEST(MathFunctions, CheckScalarMatrixMultiplicationWithTranslation_COLUMN_ROW){
+TEST(MatrixTests, CheckScalarMatrixMultiplicationWithTranslation_COLUMN_ROW){
     TEST_DESCRIPTION("","CheckScalarMatrixMultiplicationWithTranslation_COLUMN_ROW")
     Mat4x4 matrixA{};
     Mat4x4 matrixB{};
@@ -265,10 +267,83 @@ TEST(MathFunctions, CheckScalarMatrixMultiplicationWithTranslation_COLUMN_ROW){
     for(int i = 0; i < 16;++i){
         ASSERT_EQ(correctArray[i],newMatrix.matrix[i]);
     }
+}
 
+/**
+ * QUATERNION TESTS
+ */
+
+/**
+ * Check if quaternion is normalized properly and if rotation quaternion is set to proper values
+ */
+TEST(QuaternionTests, CheckQuaternionRotationInitialization){
+    TEST_DESCRIPTION("Check if quaternion is properly normalized and values are set properly","CheckQuaternionRotationInitialization")
+
+    Quaternion quaternion{0};
+
+    createUnitQuaternionForRotation(1,1,1,120,&quaternion);
+
+    EXPECT_NEAR(quaternion.w,0.5f,0.1);
+    EXPECT_NEAR(quaternion.i,0.5f,0.1);
+    EXPECT_NEAR(quaternion.j,0.5f,0.1);
+    EXPECT_NEAR(quaternion.k,0.5f,0.1);
+}
+
+/**
+ * Check if quaternion conjugate is set properly
+ */
+TEST(QuaternionTests, CheckConjugateOfQuaternionFunction){
+    TEST_DESCRIPTION("Check if quaternion conjugate is set properly","CheckConjugateOfQuaternionFunction")
+
+    Quaternion quaternion{0};
+    Quaternion conjugate{0};
+    createUnitQuaternionForRotation(1,1,1,120,&quaternion);
+    createConjugateQuaternion(&quaternion,&conjugate);
+
+    EXPECT_NEAR(conjugate.w,0.5f,0.1);
+    EXPECT_NEAR(conjugate.i,-0.5f,0.1);
+    EXPECT_NEAR(conjugate.j,-0.5f,0.1);
+    EXPECT_NEAR(conjugate.k,-0.5f,0.1);
 
 }
 
+/**
+ * Check if quaternion is properly setup from Vec3 struct
+ */
+TEST(QuaternionTests, CheckIfVectorIsProperlyTransformedIntoQuaternion){
+    TEST_DESCRIPTION("Check if quaternion is properly setup from Vec3 struct","CheckIfVectorIsProperlyTransformedIntoQuaternion")
+
+    Vec3 point{.x=7,.y=2,.z=10};
+
+    Quaternion quaternion =  createQuaternionFromVector3Point(&point);
+
+    ASSERT_EQ(quaternion.w,0);
+    ASSERT_EQ(quaternion.i,7);
+    ASSERT_EQ(quaternion.j,2);
+    ASSERT_EQ(quaternion.k,10);
+}
+
+
+/**
+ * Multiplication of quaternion checking
+ */
+TEST(QuaternionTests, CheckIfQuaternionMultiplicationIsDoneProperly){
+    TEST_DESCRIPTION("Check if quaternion * quaternion gives another quaterinion with proper results","CheckIfQuaternionMultiplicationIsDoneProperly")
+
+    Quaternion quaternion{0};
+    Vec3 point{.x=7,.y=2,.z=5};
+
+    createUnitQuaternionForRotation(1,1,1,120,&quaternion);
+    Quaternion pointQuaternion = createQuaternionFromVector3Point(&point);
+
+    Quaternion newQuaternion = quaternion * &pointQuaternion;
+
+    ASSERT_EQ(newQuaternion.w,-7);
+    ASSERT_EQ(newQuaternion.i,5);
+    ASSERT_EQ(newQuaternion.j,2);
+    ASSERT_NEAR(newQuaternion.k,0,0.1);
+
+}
 
 
 /**

@@ -2,7 +2,7 @@
 // Created by leno on 27.04.23..
 //
 
-#include "utilz/math/linear_algebra/linear_functions/transformation_matrices.h"
+#include "utilz/math/algebra//linear_functions/transformation_matrices.h"
 
 
 

@@ -1,5 +1,5 @@
 /* stb_image_write - v1.16 - public domain - http://nothings.org/stb
-   writes out PNG/BMP/TGA/JPEG/HDR images to C stdio - Sean Barrett 2010-2015
+   writes out PNG/BMP/TGA/JPEG/HDR src to C stdio - Sean Barrett 2010-2015
                                      no warranty implied; use at your own risk
 
    Before #including,
@@ -12,7 +12,7 @@
 
 ABOUT:
 
-   This header file is a library for writing images to C stdio or a callback.
+   This header file is a library for writing src to C stdio or a callback.
 
    The PNG output is not optimal; it is 20-50% larger than the file
    written by a decent optimizing implementation; though providing a custom
@@ -679,7 +679,7 @@ static void stbiw__write_hdr_scanline(stbi__write_context *s, int width, int nco
    scanlineheader[2] = (width&0xff00)>>8;
    scanlineheader[3] = (width&0x00ff);
 
-   /* skip RLE for images too small or large */
+   /* skip RLE for src too small or large */
    if (width < 8 || width >= 32768) {
       for (x=0; x < width; x++) {
          switch (ncomp) {

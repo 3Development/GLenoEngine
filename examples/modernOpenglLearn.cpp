@@ -5,7 +5,7 @@
 #include <filesystem>
 #include "yaml-cpp/yaml.h"
 #include "core/gl/vbo&vao/vaoVbo.h"
-#include "utilz/math/linear_algebra/linear_functions/transformation_matrices.h"
+#include "utilz/math/algebra/linear_functions/transformation_matrices.h"
 #include "glm/gtc/type_ptr.hpp"
 #include <glm/glm.hpp>
 

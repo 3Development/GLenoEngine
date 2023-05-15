@@ -19596,7 +19596,7 @@ nk_draw_button_text(struct nk_command_buffer *out,
     const struct nk_style_item *background;
     background = nk_draw_button(out, bounds, state, style);
 
-    /* select correct colors/images */
+    /* select correct colors/src */
     if (background->type == NK_STYLE_ITEM_COLOR)
         text.background = background->data.color;
     else text.background = style->text_background;
@@ -19642,7 +19642,7 @@ nk_draw_button_symbol(struct nk_command_buffer *out,
     struct nk_color sym, bg;
     const struct nk_style_item *background;
 
-    /* select correct colors/images */
+    /* select correct colors/src */
     background = nk_draw_button(out, bounds, state, style);
     if (background->type == NK_STYLE_ITEM_COLOR)
         bg = background->data.color;
@@ -19723,7 +19723,7 @@ nk_draw_button_text_symbol(struct nk_command_buffer *out,
     struct nk_text text;
     const struct nk_style_item *background;
 
-    /* select correct background colors/images */
+    /* select correct background colors/src */
     background = nk_draw_button(out, bounds, state, style);
     if (background->type == NK_STYLE_ITEM_COLOR)
         text.background = background->data.color;
@@ -20154,7 +20154,7 @@ nk_draw_checkbox(struct nk_command_buffer *out,
     const struct nk_style_item *cursor;
     struct nk_text text;
 
-    /* select correct colors/images */
+    /* select correct colors/src */
     if (state & NK_WIDGET_STATE_HOVER) {
         background = &style->hover;
         cursor = &style->cursor_hover;
@@ -20196,7 +20196,7 @@ nk_draw_option(struct nk_command_buffer *out,
     const struct nk_style_item *cursor;
     struct nk_text text;
 
-    /* select correct colors/images */
+    /* select correct colors/src */
     if (state & NK_WIDGET_STATE_HOVER) {
         background = &style->hover;
         cursor = &style->cursor_hover;
@@ -20460,7 +20460,7 @@ nk_draw_selectable(struct nk_command_buffer *out,
     struct nk_text text;
     text.padding = style->padding;
 
-    /* select correct colors/images */
+    /* select correct colors/src */
     if (!active) {
         if (state & NK_WIDGET_STATE_ACTIVED) {
             background = &style->pressed;
@@ -20823,7 +20823,7 @@ nk_draw_slider(struct nk_command_buffer *out, nk_flags state,
     struct nk_rect bar;
     const struct nk_style_item *background;
 
-    /* select correct slider images/colors */
+    /* select correct slider src/colors */
     struct nk_color bar_color;
     const struct nk_style_item *cursor;
 
@@ -21068,7 +21068,7 @@ nk_draw_progress(struct nk_command_buffer *out, nk_flags state,
     NK_UNUSED(max);
     NK_UNUSED(value);
 
-    /* select correct colors/images to draw */
+    /* select correct colors/src to draw */
     if (state & NK_WIDGET_STATE_ACTIVED) {
         background = &style->active;
         cursor = &style->cursor_active;
@@ -21252,7 +21252,7 @@ nk_draw_scrollbar(struct nk_command_buffer *out, nk_flags state,
     const struct nk_style_item *background;
     const struct nk_style_item *cursor;
 
-    /* select correct colors/images to draw */
+    /* select correct colors/src to draw */
     if (state & NK_WIDGET_STATE_ACTIVED) {
         background = &style->active;
         cursor = &style->cursor_active;
@@ -22806,7 +22806,7 @@ nk_do_edit(nk_flags *state, struct nk_command_buffer *out,
     {const char *text = nk_str_get_const(&edit->string);
     int len = nk_str_len_char(&edit->string);
 
-    {/* select background colors/images  */
+    {/* select background colors/src  */
     const struct nk_style_item *background;
     if (*state & NK_WIDGET_STATE_ACTIVED)
         background = &style->active;
