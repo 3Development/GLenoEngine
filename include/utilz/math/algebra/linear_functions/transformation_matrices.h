@@ -5,7 +5,7 @@
 #ifndef LENOENGINE_TRANSFORMATION_MATRICES_H
 #define LENOENGINE_TRANSFORMATION_MATRICES_H
 #include "../objects/matrix.h"
-#include "../objects/vector.h"
+#include "../objects/quaternion.h"
 #include <cmath>
 
 
@@ -47,5 +47,13 @@ void createScaleMatrix4x4(Mat4x4* mat4X4, Vec3* vec3);
  * @param zFar
  */
 void createPerspectiveMatrix4x4(Mat4x4* mat4X4,float width,float height,float fovDegree,float zNear,float zFar);
+
+
+/**
+ *
+ * @param quaternion
+ * @param mat4X4
+ */
+void createMat4x4FromQuaternionRotation(Quaternion* quaternion,Mat4x4* mat4X4 );
 
 #endif //LENOENGINE_TRANSFORMATION_MATRICES_H

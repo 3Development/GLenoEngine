@@ -269,6 +269,23 @@ TEST(MatrixTests, CheckScalarMatrixMultiplicationWithTranslation_COLUMN_ROW){
     }
 }
 
+TEST(MatrixTests, Mat4x4MultipliedWithVec3){
+    TEST_DESCRIPTION("","Mat4x4MultipliedWithVec3")
+    Mat4x4 matrixA{};
+
+    Vec3 translation{.x=5,.y=2,.z=3};
+    Vec3 point{.x=1,.y=2,.z=2};
+
+    initIdentityMatrix4x4(&matrixA);
+    createTranslationMatrix4x4(&matrixA,&translation);
+
+    Vec3 result = matrixA * &point;
+
+    ASSERT_EQ(result.x,6);
+    ASSERT_EQ(result.y,4);
+    ASSERT_EQ(result.z,5);
+}
+
 /**
  * QUATERNION TESTS
  */
@@ -342,8 +359,45 @@ TEST(QuaternionTests, CheckIfQuaternionMultiplicationIsDoneProperly){
     ASSERT_EQ(newQuaternion.i,5);
     ASSERT_EQ(newQuaternion.j,2);
     ASSERT_NEAR(newQuaternion.k,0,0.1);
-
 }
+
+
+/**
+ * Multiplication of quaternion checking
+ */
+TEST(QuaternionTests, CheckQuaternionMatRotationWithVector){
+    TEST_DESCRIPTION("Check if quaternion to rotation matrix is returning appropriate values","CheckQuaternionToMat4x4")
+
+    Quaternion quaternion{0};
+    Vec3 point{.x=1,.y=0,.z=0};
+
+    createUnitQuaternionForRotation(0,1,1,120,&quaternion);
+
+    Mat4x4 mat4X4{0};
+
+    createMat4x4FromQuaternionRotation(&quaternion, &mat4X4);
+
+
+    ASSERT_NEAR(mat4X4.matrix[0],-0.5f,0.1);
+    ASSERT_NEAR(mat4X4.matrix[4],-0.61f,0.1);
+    ASSERT_NEAR(mat4X4.matrix[8],0.6123f,0.1);
+
+    ASSERT_NEAR(mat4X4.matrix[1],0.6123,0.1);
+    ASSERT_NEAR(mat4X4.matrix[5],0.25,0.1);
+    ASSERT_NEAR(mat4X4.matrix[9],0.75,0.1);
+
+    ASSERT_NEAR(mat4X4.matrix[2],-0.6123,0.1);
+    ASSERT_NEAR(mat4X4.matrix[6],0.75,0.1);
+    ASSERT_NEAR(mat4X4.matrix[10],0.25,0.1);
+
+
+    Vec3 rotatedPoint = mat4X4 * &point;
+
+    ASSERT_NEAR(rotatedPoint.x,-0.5,0.05);
+    ASSERT_NEAR(rotatedPoint.y,0.6123,0.05);
+    ASSERT_NEAR(rotatedPoint.z,-0.6123,0.05);
+}
+
 
 
 /**

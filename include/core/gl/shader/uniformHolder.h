@@ -4,16 +4,20 @@
 
 #ifndef LENOENGINE_UNIFORMHOLDER_H
 #define LENOENGINE_UNIFORMHOLDER_H
+#include "utilz/math/algebra/objects/matrix.h"
+
+
+/**
+ * Placeholder for all the uniforms that are used.
+ */
+
 
 struct UniformsHolder{
-    unsigned int worldMatrixLocation = -1;
-    const char* worldMatrix = "worldMatrix";
-
-    unsigned int projectionMatrixLocation = -1;
-    const char* projectionMatrix = "projectionMatrix";
-
-    unsigned int viewMatrixLocation = -1;
-    const char* viewMatrix = "viewMatrix";
+    int worldMatrixLocation = -1;
+    int projectionMatrixLocation = -1;
+    int translationMatrixLocation = -1;
+    int viewMatrixLocation = -1;
+    int rotationMatrixLocation = -1;
 };
 
 #endif //LENOENGINE_UNIFORMHOLDER_H

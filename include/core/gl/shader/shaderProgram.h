@@ -32,7 +32,7 @@ protected:
     /**
      * uniforms holder
      */
-     const UniformsHolder uniformsHolder;
+    UniformsHolder uniformsHolder;
 
 public:
     ShaderProgram(const char* vertexShader,
@@ -47,7 +47,9 @@ public:
 
      void activateProgram();
 
-     void initUniformLocation(const char* name,int* addressOfId);
+     void deactivateProgram();
+
+     bool initUniformLocation(UniformEnums::UniformType type);
 
     /**
      * Getters functions
@@ -60,6 +62,8 @@ public:
     unsigned int getProgramId();
 
     const UniformsHolder* getUniformsHolder();
+
+    unsigned int getLocationIdOfUniform(UniformEnums::UniformType type);
 
 protected:
 

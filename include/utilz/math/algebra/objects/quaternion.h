@@ -4,7 +4,6 @@
 
 #ifndef LENOENGINE_QUATERNION_H
 #define LENOENGINE_QUATERNION_H
-
 #include "vector.h"
 #include <cmath>
 

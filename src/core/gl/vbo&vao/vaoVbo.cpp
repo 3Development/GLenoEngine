@@ -46,8 +46,10 @@ int findFirstAvailableVboInVao5(VAO_5* vao){
  * @param stride
  *
  * @throws VboVaoEnums::ErrorCodes
+ *
+ * @DEPRECATED FUNCTION
  */
-void initializeVboObjectAndBufferData(VAO_5* vao,
+int initializeVboObjectAndBufferData(VAO_5* vao,
                                       const void* data,
                                       int sizeofDataInBytes ,
                                       GLenum targetBuffer,
@@ -68,14 +70,74 @@ void initializeVboObjectAndBufferData(VAO_5* vao,
     glBufferData(targetBuffer,sizeofDataInBytes,data,GL_STATIC_DRAW);
 
 
-    vao->vbos[index] = VBO{.id=id,.attributeType=attributeType};
+    vao->vbos[index] = VBO{.id=id};
 
     if(targetBuffer == GL_ARRAY_BUFFER){
         glEnableVertexAttribArray(indexAttribPointer);
         glVertexAttribPointer(indexAttribPointer,numOfVerticesComponents,typeOfData,GL_FALSE,stride,(const void*)0);
         glBindBuffer(targetBuffer,UNBOUND_BUFFER);
     }
+    return index;
 }
+
+/**
+ * It generates and buffers the data
+ * It also unbinds the buffer with that id
+ *
+ * Difference between this and method initializeVboObjectAndBufferData is that it will not autmatically search for available
+ * index in VAO5 struct array. Instead indexAttribPointer will be used as index.
+ *
+ * If type is GL_ELEMENT_ARRAY_BUFFER, it means it is about INDICES, they will be stored in specif field in VAO_5 and not in array
+ *
+ * @param vao
+ * @param data
+ * @param sizeofDataInBytes
+ * @param targetBuffer
+ * @param typeOfData
+ * @param indexAttribPointer
+ * @param numOfVerticesComponents
+ * @param stride
+ */
+void initializeVboObjectAndSaveItAtIndexAttrPointer(VAO_5* vao,
+                                                   const void* data,
+                                                   int sizeofDataInBytes ,
+                                                   GLenum targetBuffer,
+                                                   GLenum typeOfData,
+                                                   int indexAttribPointer,
+                                                   int numOfVerticesComponents,
+                                                   float stride
+){
+
+    if( targetBuffer == GL_ELEMENT_ARRAY_BUFFER){
+        unsigned int id;
+        glGenBuffers(1,&id);
+        glBindBuffer(targetBuffer,id);
+        glBufferData(targetBuffer,sizeofDataInBytes,data,GL_STATIC_DRAW);
+        vao->indicesId = id;
+
+    }
+    else if( targetBuffer == GL_ARRAY_BUFFER){
+
+        VBO vbo = vao->vbos[indexAttribPointer];
+
+        if(vbo.id == -1){
+            throw VboVaoEnums::ErrorCodes::VAO_SLOT_ALREADY_TAKEN;
+        }
+
+        unsigned int id;
+        glGenBuffers(1,&id);
+        glBindBuffer(targetBuffer,id);
+        glBufferData(targetBuffer,sizeofDataInBytes,data,GL_STATIC_DRAW);
+
+        vao->vbos[indexAttribPointer] = VBO{.id=id};
+        glEnableVertexAttribArray(indexAttribPointer);
+        glVertexAttribPointer(indexAttribPointer,numOfVerticesComponents,typeOfData,GL_FALSE,stride,(const void*)0);
+        glBindBuffer(targetBuffer,UNBOUND_BUFFER);
+
+    }
+}
+
+
 
 
 /**
@@ -95,6 +157,51 @@ void initializeVao5Object(void* dest,bool active){
     }
 }
 
+/**
+ * Activating all the buffers and vao
+ *
+ * 1. Activate vao
+ * 2. Activate indices
+ * 3. Activate all the vbo using attrIndexPointer (only ones that are initialized, meaning those who dont have id 0)
+ *
+ * @param vao
+ */
+void prepareVaoForDrawing(VAO_5* vao){
+    glBindVertexArray(vao->id);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,vao->indicesId);
+
+    for(int attribPointer = 0; attribPointer < 5; ++attribPointer){
+
+        if(vao->vbos[attribPointer].id != 0){
+            glEnableVertexAttribArray(attribPointer);
+        }
+    }
+}
+
+/**
+ * Drawing element using indices.
+ * Indices count is size of an array basically
+ * @param indicesCount
+ */
+void drawVaoUsingIndices(unsigned int indicesCount){
+    glDrawElements(GL_TRIANGLES,indicesCount,GL_UNSIGNED_INT, nullptr);
+}
+
+/**
+ * Deactivate model
+ */
+ void deactivateAndUnbindAllFromVao(VAO_5* vao){
+
+    for(int attribPointer = 0; attribPointer < 5; ++attribPointer){
+
+        if(vao->vbos[attribPointer].id != 0){
+            glDisableVertexAttribArray(UNBOUND_BUFFER);
+        }
+    }
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,UNBOUND_BUFFER);
+    glBindVertexArray(UNBOUND_BUFFER);
+}
+
 
 /**
  * Activates vao with id in struct. Meaning when drawing opengl will use that vao
@@ -110,8 +217,16 @@ void activateVao(VAO_5* vao){
  * @param vao
  */
 void deactivateVao(){
-    glBindVertexArray(UNBOUND_BUFFER);
+    glBindVertexArray(0);
 }
+
+
+/**
+ * VAO GROUP functions
+ */
+
+
+
 
 
 

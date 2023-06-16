@@ -117,6 +117,23 @@ struct Mat4x4{
         }
         return newMatrix;
     }
+
+    /**
+     * Matrix vector multiplication -> careful because it is row * column multiplication
+     * Adding a w value to be default to 1
+     *
+     * @param vec3
+     * @return
+     */
+    inline Vec3 operator * (Vec3* vec3){
+        Vec3 newVector{0};
+        newVector.x = ( matrix[(0 * 4) + 0 ] * vec3->x ) + ( matrix[(1 * 4) + 0 ] * vec3->y ) + ( matrix[(2 * 4) + 0 ] * vec3->z ) + ( matrix[(3 * 4) + 0 ] * 1 );
+        newVector.y = ( matrix[(0 * 4) + 1 ] * vec3->x ) + ( matrix[(1 * 4) + 1 ] * vec3->y ) + ( matrix[(2 * 4) + 1 ] * vec3->z ) + ( matrix[(3 * 4) + 1 ] * 1 );
+        newVector.z = ( matrix[(0 * 4) + 2 ] * vec3->x ) + ( matrix[(1 * 4) + 2 ] * vec3->y ) + ( matrix[(2 * 4) + 2 ] * vec3->z ) + ( matrix[(3 * 4) + 2 ] * 1 );
+        return newVector;
+    }
+
+
 };
 
 

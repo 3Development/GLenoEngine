@@ -77,3 +77,33 @@ void createPerspectiveMatrix4x4(Mat4x4* mat4X4,float width,float height,float fo
     mat4X4->matrix[ (4*2) + 3 ] = -1;
 }
 
+/**
+ *
+ * @param quaternion
+ * @param mat4X4
+ */
+void createMat4x4FromQuaternionRotation(Quaternion* quaternion,Mat4x4* mat4X4 ){
+    float w = quaternion->w;
+    float x = quaternion->i;
+    float y = quaternion->j;
+    float z = quaternion->k;
+
+
+    mat4X4->matrix[(0 * 4) + 0] = 2 * ( w * w + x * x) - 1;
+    mat4X4->matrix[(1 * 4) + 0] = 2 * (x * y  - w * z);
+    mat4X4->matrix[(2 * 4) + 0] = 2 * (x * z + w * y);
+
+
+    mat4X4->matrix[(0 * 4) + 1] = 2 * (x * y + w * z);
+    mat4X4->matrix[(1 * 4) + 1] = 2 * (w * w + y * y) - 1;
+    mat4X4->matrix[(2 * 4) + 1] = 2 * (y * z - w * x);
+
+    mat4X4->matrix[(0 * 4) + 2] = 2 * (x * z - w * y);
+    mat4X4->matrix[(1 * 4) + 2] = 2 * (y * z + w * x);
+    mat4X4->matrix[(2 * 4) + 2] = 2 * (w * w + z * z) -1;
+
+    mat4X4->matrix[(3 * 4) + 3] = 1;
+}
+
+
+

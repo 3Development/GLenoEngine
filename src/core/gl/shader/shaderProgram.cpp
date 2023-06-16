@@ -22,6 +22,7 @@ ShaderProgram::ShaderProgram(const char *vertexShader, const char *fragmentShade
  */
 ShaderProgram::~ShaderProgram() {
     std::cout<<"ShaderProgramDeconstructor"<<std::endl;
+
 }
 
 
@@ -87,20 +88,56 @@ void ShaderProgram::activateProgram() {
     glUseProgram(programId);
 }
 
+void ShaderProgram::deactivateProgram() {
+    glUseProgram(-1);
+}
+
+
 
 /**
  * Fetches location of uniform inside shader program
  * @param name
  * @param addressOfId
  */
-void ShaderProgram::initUniformLocation(const char *name,int* addressOfId) {
+bool ShaderProgram::initUniformLocation(UniformEnums::UniformType type) {
     if(programId == -1){
         throw ShaderProgramEnums::ErrorCodes::PROGRAM_NOT_INITIALIZED;
     }else{
-        *addressOfId = glGetUniformLocation(programId,name);
-
-        if(*addressOfId == GL_INVALID_VALUE || *addressOfId == GL_INVALID_OPERATION || *addressOfId == -1){
+        /**
+         * Check if there is a key, if key is not there it will throw an error
+         */
+        if(UniformEnums::_uniformTypeMap.find(type) == UniformEnums::_uniformTypeMap.end()){
             throw ShaderProgramEnums::ErrorCodes::UNIFORM_LOCATION_INITIALIZATION_ERROR;
+        }
+
+        std::string name = UniformEnums::_uniformTypeMap.at(type);
+
+        int addressOfId = glGetUniformLocation(programId,name.c_str());
+
+        if(addressOfId == GL_INVALID_VALUE || addressOfId == GL_INVALID_OPERATION || addressOfId == -1){
+            throw ShaderProgramEnums::ErrorCodes::UNIFORM_LOCATION_INITIALIZATION_ERROR;
+        }
+
+        switch (type) {
+            case UniformEnums::UniformType::WORLD_MATRIX :
+                uniformsHolder.worldMatrixLocation = addressOfId;
+                return true;
+
+            case UniformEnums::PROJECTION_MATRIX:
+                uniformsHolder.projectionMatrixLocation = addressOfId;
+                return true;
+
+            case UniformEnums::TRANSLATION_MATRIX:
+                uniformsHolder.translationMatrixLocation = addressOfId;
+                return true;
+
+            case UniformEnums::ROTATION_MATRIX:
+                uniformsHolder.rotationMatrixLocation = addressOfId;
+                return true;
+
+            case UniformEnums::VIEW_MATRIX:
+                uniformsHolder.viewMatrixLocation = addressOfId;
+                return true;
         }
     }
 }
@@ -134,9 +171,35 @@ unsigned int ShaderProgram::getProgramId() {
     return programId;
 }
 
-const UniformsHolder *ShaderProgram::getUniformsHolder() {
+const UniformsHolder* ShaderProgram::getUniformsHolder() {
     return &uniformsHolder;
 }
+
+/**
+ * Based on type of uniform return his location
+ * @param type
+ * @return
+ */
+unsigned int ShaderProgram::getLocationIdOfUniform(UniformEnums::UniformType type) {
+    switch (type) {
+        case UniformEnums::UniformType::WORLD_MATRIX :
+            return -1;
+
+        case UniformEnums::PROJECTION_MATRIX:
+            return uniformsHolder.projectionMatrixLocation;
+
+        case UniformEnums::TRANSLATION_MATRIX:
+            return uniformsHolder.translationMatrixLocation;
+
+        case UniformEnums::ROTATION_MATRIX:
+            return uniformsHolder.rotationMatrixLocation;
+
+        case UniformEnums::VIEW_MATRIX:
+            return uniformsHolder.viewMatrixLocation;
+    }
+    return -1;
+}
+
 
 
 

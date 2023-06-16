@@ -6,8 +6,12 @@
 #include "yaml-cpp/yaml.h"
 #include "core/gl/vbo&vao/vaoVbo.h"
 #include "utilz/math/algebra/linear_functions/transformation_matrices.h"
+#include "core/engine/objects/entityGroup.h"
 #include "glm/gtc/type_ptr.hpp"
 #include <glm/glm.hpp>
+#include <chrono>
+
+using namespace std::chrono;
 
 void GLAPIENTRY
 MessageCallback( GLenum source,
@@ -292,7 +296,7 @@ void test3(){
 
     void* vao5= alloca(sizeof(VAO_5));
 
-    initializeVao5Object(vao5,false);
+    initializeVao5Object(vao5,true);
 
 
     VAO_5 vao5C=*(VAO_5*)vao5;
@@ -320,9 +324,9 @@ void test3(){
             0,0,0,1,
     };
     try{
-        initializeVboObjectAndBufferData(&vao5C, positions,sizeof(float)*12 ,GL_ARRAY_BUFFER,GL_FLOAT,VboVaoEnums::VboAttributeType::POSITION,0,3,sizeof(float)*3);
-        initializeVboObjectAndBufferData(&vao5C, color,sizeof(float)*24 ,GL_ARRAY_BUFFER,GL_FLOAT,VboVaoEnums::VboAttributeType::COLOR,1,4,sizeof(float)*4);
-        initializeVboObjectAndBufferData(&vao5C, indices,sizeof(float)*6 ,GL_ELEMENT_ARRAY_BUFFER,GL_FLOAT,VboVaoEnums::VboAttributeType::INDICES,-1,-1,-1);
+        initializeVboObjectAndSaveItAtIndexAttrPointer(&vao5C, positions,sizeof(float)*12 ,GL_ARRAY_BUFFER,GL_FLOAT,0,3,sizeof(float)*3);
+        initializeVboObjectAndSaveItAtIndexAttrPointer(&vao5C, color,sizeof(float)*24 ,GL_ARRAY_BUFFER,GL_FLOAT,1,4,sizeof(float)*4);
+        initializeVboObjectAndSaveItAtIndexAttrPointer(&vao5C, indices,sizeof(float)*6 ,GL_ELEMENT_ARRAY_BUFFER,GL_FLOAT,-1,-1,-1);
 
     }catch (VboVaoEnums::ErrorCodes e){
         if (e == VboVaoEnums::VA0_NO_FREE_SLOT_IN_VBO_ARRAY){
@@ -351,24 +355,29 @@ void test3(){
 
     Mat4x4 mat4X4;
     Mat4x4 mat4X4translation;
+    Mat4x4 mat4X4translation3;
+    Mat4x4 mat4X4rotation;
 
     initIdentityMatrix4x4(&mat4X4);
     initIdentityMatrix4x4(&mat4X4translation);
+    initIdentityMatrix4x4(&mat4X4translation3);
 
     Vec3 vec3Scale;
-    vec3Scale.x = 1;
+    vec3Scale.x = 2;
     vec3Scale.y = 1;
     vec3Scale.z = 1;
     createScaleMatrix4x4(&mat4X4,&vec3Scale);
 
-    int location= glGetUniformLocation(shaderProgram.getProgramId(),"translationMatrix");
-    int projectionMatrix= glGetUniformLocation(shaderProgram.getProgramId(),"projectionMatrix");
+    int location= glGetUniformLocation(shaderProgram.getProgramId(),"translationM");
+    int projectionMatrix= glGetUniformLocation(shaderProgram.getProgramId(),"projectionM");
+    int rotationMatrix= glGetUniformLocation(shaderProgram.getProgramId(),"rotationM");
 
 
-    glUniformMatrix4fv(location,1,GL_FALSE,&mat4X4.matrix[0]);
+
 
 
     Vec3 vector3;
+    Vec3 vector32;
     Mat4x4 projection;
     createPerspectiveMatrix4x4(&projection,1024,768,45,2,500);
 
@@ -376,19 +385,64 @@ void test3(){
 
     std::cout<<glGetString(GL_VERSION)<<std::endl;
     vector3.x=0.01;
-    vector3.z=-105;
-    while(!glfwWindowShouldClose(window)){
-        renderScene(value);
-        glfwPollEvents();
-        glfwSwapBuffers(window);
+    vector3.z=-5;
+    vector32.z=-5;
+    Quaternion quaternion{0};
 
+
+    float angle = 0;
+
+    int sign = 1;
+
+    bool deacitave = false;
+
+    while(!glfwWindowShouldClose(window)){
+        glClear(GL_COLOR_BUFFER_BIT);
+
+
+        glfwPollEvents();
+        prepareVaoForDrawing(&vao5C);
+
+        createUnitQuaternionForRotation(1,1,1,angle,&quaternion);
 
         createScaleMatrix4x4(&mat4X4,&vec3Scale);
         createTranslationMatrix4x4(&mat4X4translation,&vector3);
+        createMat4x4FromQuaternionRotation(&quaternion,&mat4X4rotation);
+
 
         Mat4x4 n = mat4X4 * &mat4X4translation;
-        glUniformMatrix4fv(location,1,GL_FALSE,&mat4X4translation.matrix[0]);
-        vector3.z+=0.1f;
+        glUniformMatrix4fv(location,1,GL_FALSE,&n.matrix[0]);
+        glUniformMatrix4fv(rotationMatrix,1,GL_FALSE,&mat4X4rotation.matrix[0]);
+
+
+        drawVaoUsingIndices(6);
+
+
+        angle+=0.1f;
+
+        vector3.x=0.6;
+        vector32.x = 0;
+        vector3.y  = 0.9f;
+        vector32.y = 1;
+        vector32.y = 0;
+
+
+        createUnitQuaternionForRotation(1,1,1,angle,&quaternion);
+
+        createScaleMatrix4x4(&mat4X4,&vec3Scale);
+        createTranslationMatrix4x4(&mat4X4translation3,&vector32);
+        createMat4x4FromQuaternionRotation(&quaternion,&mat4X4rotation);
+
+
+        glUniformMatrix4fv(location,1,GL_FALSE,&mat4X4translation3.matrix[0]);
+        glUniformMatrix4fv(rotationMatrix,1,GL_FALSE,&mat4X4rotation.matrix[0]);
+
+        drawVaoUsingIndices(6);
+        deactivateAndUnbindAllFromVao(&vao5C);
+
+
+        glfwSwapBuffers(window);
+
     }
 }
 
