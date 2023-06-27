@@ -143,7 +143,7 @@ TEST(MegaArray,MegaArrayInitializationAlgorithmTest){
     const int numberofEntites = 3;
     const int numberOfSlotsPerEntity = 3 * 3;
 
-    VAOGroup<numberofEntites,numberOfSlotsPerEntity> vaoGroup;
+    VaoTransformDataGroup<numberofEntites,numberOfSlotsPerEntity> vaoGroup;
 
     ASSERT_EQ(sizeof(vaoGroup.entitiesData), numberofEntites * numberOfSlotsPerEntity * sizeof(float));
 
@@ -156,7 +156,7 @@ TEST(MegaArray,MegaArrayInitializationAlgorithmTest){
      * Second part of test
      */
 
-    VAOGroup<numberofEntites,numberOfSlotsPerEntity> vaoGroupHandle;
+    VaoTransformDataGroup<numberofEntites,numberOfSlotsPerEntity> vaoGroupHandle;
     initializeVaoGroup<numberofEntites,numberOfSlotsPerEntity>(&vaoGroupHandle);
     ASSERT_EQ(vaoGroupHandle.availableSlots.size(), numberofEntites);
 
@@ -172,6 +172,7 @@ TEST(MegaArray,MegaArrayInitializationAlgorithmTest){
     ASSERT_EQ(vaoGroupHandle.availableSlots.at(0),2);
     ASSERT_EQ(vaoGroupHandle.active[1],1);
 
+    Timer t;
     removeEntity(&vaoGroupHandle,indexSlot);
     ASSERT_EQ(vaoGroupHandle.active[0],1);
 
@@ -203,7 +204,7 @@ TEST(MegaArray,MegaArrayErrorTest){
     const int numberofEntites = 1;
     const int numberOfSlotsPerEntity = 3 * 3;
 
-    VAOGroup<numberofEntites,numberOfSlotsPerEntity> vaoGroup;
+    VaoTransformDataGroup<numberofEntites,numberOfSlotsPerEntity> vaoGroup;
 
     ASSERT_EQ(sizeof(vaoGroup.entitiesData), numberofEntites * numberOfSlotsPerEntity * sizeof(float));
 
@@ -229,9 +230,52 @@ TEST(MegaArray,MegaArrayErrorTest){
     }catch (VboVaoEnums::ErrorCodes e){
         ASSERT_EQ(e,VboVaoEnums::ErrorCodes::VAOGROUP_ENTITY_AT_INDEX_NOT_EXISTS);
     }
-
-
 }
+
+TEST(MegaArray,MegaArrayDataFilling){
+    TEST_DESCRIPTION("Check if mega array algorithm for addint data to big array is working properly","MegaArrayDataFilling")
+
+    const int numberofEntites = 2;
+    const int numberOfSlotsPerEntity = 2 * 3;
+
+    VaoTransformDataGroup<numberofEntites,numberOfSlotsPerEntity> vaoGroup;
+
+    ASSERT_EQ(sizeof(vaoGroup.entitiesData), numberofEntites * numberOfSlotsPerEntity * sizeof(float));
+
+    int size = calculateSizeOfVaoGroup<numberofEntites,numberOfSlotsPerEntity>();
+
+    ASSERT_EQ(sizeof(vaoGroup),  size   );
+
+    initializeVaoGroup(&vaoGroup);
+
+    int entity1 = addNewEntity(&vaoGroup);
+    int entity2 = addNewEntity(&vaoGroup);
+
+    float position[] = {
+            1.0f,
+            0.0f,
+            2.0f
+    };
+    float rotation[] = {
+            90.0f,
+            0.0f,
+            85.0f
+    };
+    addComponentDataToEntityArray<numberofEntites,numberOfSlotsPerEntity>(&vaoGroup,entity1,position,3,0);
+
+    ASSERT_EQ(vaoGroup.entitiesData[( entity1*numberOfSlotsPerEntity )+ 0 ],1.0f);
+    ASSERT_EQ(vaoGroup.entitiesData[( entity1*numberOfSlotsPerEntity )+ 1 ],0.0f);
+    ASSERT_EQ(vaoGroup.entitiesData[( entity1*numberOfSlotsPerEntity )+ 2 ],2.0f);
+
+
+    addComponentDataToEntityArray<numberofEntites,numberOfSlotsPerEntity>(&vaoGroup,entity2,rotation,3,3);
+
+    ASSERT_EQ(vaoGroup.entitiesData[( entity2*numberOfSlotsPerEntity )+ 3 ],90.0f);
+    ASSERT_EQ(vaoGroup.entitiesData[( entity2*numberOfSlotsPerEntity )+ 4 ],0.0f);
+    ASSERT_EQ(vaoGroup.entitiesData[( entity2*numberOfSlotsPerEntity )+ 5 ],85.0f);
+}
+
+
 
 
 

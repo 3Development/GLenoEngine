@@ -157,6 +157,25 @@ void initializeVao5Object(void* dest,bool active){
     }
 }
 
+
+/**
+ * Initialize empty vao - array
+ * Plus Vao gets also activated
+ * Without memcpy
+ * @param dest
+ * @param sizeOfVbos -> this params tells us how many of vbo's will there be (how many attributes like position,color,normal)
+ */
+void initializeVao5Object(VAO_5* vao5,bool active){
+    unsigned int id;
+    glGenVertexArrays(1,&id);
+
+    vao5->id = id;
+
+    if(active){
+        glBindVertexArray(vao5->id);
+    }
+}
+
 /**
  * Activating all the buffers and vao
  *

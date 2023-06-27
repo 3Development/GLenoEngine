@@ -7,6 +7,7 @@
 #include "core/gl/enums/glenums.h"
 #include <string.h>
 #include <vector>
+#include <functional>
 #include "utilz/math/algebra/objects/vector.h"
 #include "GL/glew.h"
 #include "GLFW/glfw3.h"
@@ -16,9 +17,14 @@
 /**
  * Buffer for Vao and VaoGroup
  */
-typedef void* VAO_HANDLE;
-typedef std::vector<float> ENTITIES_GROUP_DATA;
-typedef std::vector<float> ENTITIES_GROUP_ACTIVE;
+ namespace vaoVboDefinitions{
+
+     typedef void* VAO_HANDLE;
+     typedef float* ENTITIES_GROUP_DATA;
+     typedef std::vector<int>& ENTITIES_GROUP_ACTIVE;
+     typedef std::function<void()> DEACTIVATE_FUNCTION;
+     typedef std::function<void()> ACTIVATE_FUNCTION;
+ }
 
 /**
  * Holds information about one VBO
@@ -51,10 +57,13 @@ struct VAO_5{
  * That is why this is called VaoGroup.
  *
  *
+ * SlotsPerEntity -> how many floats that one entity need ( p1,p2,p3,n1,n2,n3) Position and normals -> so two components
+ * But data that should be contanied in entities data should be DATA ONLY FOR TRANSFORMATION LIKE (Position,Rotation,Scale) Not fixed that like normals, indices. PLUS
+ * Position used for moving object not position that is passed to opengl
  */
 #pragma pack(1) // To make sure that compiler is not adding wasted bytes to struct. It is called PADDING. with this it will return correct size of struc
 template<int NumberOfEntites,int SlotsPerEntity>
-struct VAOGroup{
+struct VaoTransformDataGroup{
     float entitiesData[NumberOfEntites * SlotsPerEntity];
     std::vector<int> active;
     std::vector<int> inactive;
@@ -126,6 +135,15 @@ void initializeVboObjectAndSaveItAtIndexAttrPointer(VAO_5* vao,
  */
 void initializeVao5Object(void* vao,bool active=true);
 
+/**
+ * Initialize empty vao - array
+ * Plus Vao gets also activated
+ * Without memcpy
+ * @param dest
+ * @param sizeOfVbos -> this params tells us how many of vbo's will there be (how many attributes like position,color,normal)
+ */
+void initializeVao5Object(VAO_5* vao5,bool active);
+
 
 /**
  * Prepare model for drawing.
@@ -170,7 +188,7 @@ void deactivateVao();
 
 /**
  *
- * Returns what would be the size of VAOGroup with specifc E and C
+ * Returns what would be the size of VaoTransformDataGroup with specifc E and C
  *
  *
  * @tparam NumberOfEntites -> E
@@ -189,7 +207,7 @@ int calculateSizeOfVaoGroup(){
  * @param group
  */
 template<int E,int C>
-void initializeVaoGroup(VAOGroup<E,C>* instance){
+void initializeVaoGroup(VaoTransformDataGroup<E,C>* instance){
 
     for(int i = 0; i < E;++i){
         instance->availableSlots.push_back(i);
@@ -201,17 +219,17 @@ void initializeVaoGroup(VAOGroup<E,C>* instance){
  *
  * @tparam E
  * @tparam C
- * @param vaoGroup
+ * @param vaoTransformDataGroup
  * @return int index slot
  */
 template<int E,int C>
-int addNewEntity(VAOGroup<E,C>* vaoGroup){
-    if(vaoGroup->availableSlots.size() > 0){
-        int indexSlot = vaoGroup->availableSlots.at(0);
+int addNewEntity(VaoTransformDataGroup<E,C>* vaoTransformDataGroup){
+    if(vaoTransformDataGroup->availableSlots.size() > 0){
+        int indexSlot = vaoTransformDataGroup->availableSlots.at(0);
 
-        vaoGroup->availableSlots.erase(vaoGroup->availableSlots.begin());
+        vaoTransformDataGroup->availableSlots.erase(vaoTransformDataGroup->availableSlots.begin());
 
-        vaoGroup->active.push_back(indexSlot);
+        vaoTransformDataGroup->active.push_back(indexSlot);
 
         return indexSlot;
     }
@@ -220,19 +238,59 @@ int addNewEntity(VAOGroup<E,C>* vaoGroup){
 
 /**
  *
+/**
+ *
+ * @tparam E
+ * @tparam C -> slots per entity
+ * @param vaoTransformDataGroup
+ * @param indexOfSlot -> index of starting in big array
+ * @param array
+ * @param indexStartComponent -> in big array each entity has each own slots, and this index represents at which index this component should be putted
+ * @param sizeOfAarray
+ */
+ template<int E,int C>
+ void addComponentDataToEntityArray(VaoTransformDataGroup<E,C>* vaoTransformDataGroup,int indexOfSlot, float* array,float sizeOfAarray,int indexStartComponent){
+
+     for(int i = 0; i < sizeOfAarray;++i){
+         vaoTransformDataGroup->entitiesData[(indexOfSlot * C) + indexStartComponent + i] = *(array+i);
+     }
+ }
+
+/**
+ *
  * @tparam E
  * @tparam C
- * @param vaoGroup
+ * @param vaoTransformDataGroup
  * @param indexSlot
  */
 template<int E,int C>
-void removeEntity(VAOGroup<E,C>* vaoGroup,int indexSlot){
-    auto it = std::find(vaoGroup->active.begin(),vaoGroup->active.end(),indexSlot);
+void removeEntity(VaoTransformDataGroup<E,C>* vaoTransformDataGroup, int indexSlot){
+    auto it = std::find(vaoTransformDataGroup->active.begin(), vaoTransformDataGroup->active.end(), indexSlot);
 
-    if(it != vaoGroup->active.end()){
-        vaoGroup->active.erase(it);
+    if(it != vaoTransformDataGroup->active.end()){
+        vaoTransformDataGroup->active.erase(it);
 
-        vaoGroup->availableSlots.push_back(indexSlot);
+        vaoTransformDataGroup->availableSlots.push_back(indexSlot);
+    }else{
+        throw VboVaoEnums::ErrorCodes::VAOGROUP_ENTITY_AT_INDEX_NOT_EXISTS;
+    }
+}
+
+/**
+ * Already created object, activate once again
+ * @tparam E
+ * @tparam C
+ * @param vaoTransformDataGroup
+ * @param indexSlot
+ */
+template<int E,int C>
+void activateEntity(VaoTransformDataGroup<E,C>* vaoTransformDataGroup, int indexSlot){
+    auto it = std::find(vaoTransformDataGroup->inactive.begin(), vaoTransformDataGroup->inactive.end(), indexSlot);
+
+    if(it != vaoTransformDataGroup->active.end()){
+        vaoTransformDataGroup->inactive.erase(it);
+
+        vaoTransformDataGroup->active.push_back(indexSlot);
     }else{
         throw VboVaoEnums::ErrorCodes::VAOGROUP_ENTITY_AT_INDEX_NOT_EXISTS;
     }
@@ -242,20 +300,24 @@ void removeEntity(VAOGroup<E,C>* vaoGroup,int indexSlot){
  *
  * @tparam E
  * @tparam C
- * @param vaoGroup
+ * @param vaoTransformDataGroup
  * @param indexSlot
  */
 template<int E,int C>
-void deactivateEntity(VAOGroup<E,C>* vaoGroup,int indexSlot){
-    auto it = std::find(vaoGroup->active.begin(),vaoGroup->active.end(),indexSlot);
+void deactivateEntity(VaoTransformDataGroup<E,C>* vaoTransformDataGroup, int indexSlot){
+    auto it = std::find(vaoTransformDataGroup->active.begin(), vaoTransformDataGroup->active.end(), indexSlot);
 
-    if(it != vaoGroup->active.end()){
-        vaoGroup->active.erase(it);
+    if(it != vaoTransformDataGroup->active.end()){
+        vaoTransformDataGroup->active.erase(it);
 
-        vaoGroup->inactive.push_back(indexSlot);
+        vaoTransformDataGroup->inactive.push_back(indexSlot);
     }else{
         throw VboVaoEnums::ErrorCodes::VAOGROUP_ENTITY_AT_INDEX_NOT_EXISTS;
     }
 }
+
+
+
+
 
 #endif //LENOENGINE_VAOVBO_H

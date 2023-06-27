@@ -28,7 +28,8 @@ add_executable(math_test utilz_tests/math_tests.cpp)
 add_executable(shader_test opengl_tests/shader_tests.cpp)
 add_executable(vao_render_test opengl_tests/vao_render_tests.cpp)
 add_executable(performance_opengl_test opengl_tests/performance_test.cpp)
-add_executable(entity_group_test engine/objects/entity_group_test.cpp)
+add_executable(entity_group_test engine/objects/model_group_test.cpp)
+add_executable(render_data_holder_test engine/render/render_data_holder_test.cpp)
 
 
 target_link_libraries(
@@ -59,9 +60,16 @@ target_link_libraries(
         lenoEngineProgram
 )
 
+target_link_libraries(
+        render_data_holder_test
+        GTest::gtest_main
+        lenoEngineProgram
+)
+
 
 include(GoogleTest)
 gtest_discover_tests(math_test)
 gtest_discover_tests(shader_test)
 gtest_discover_tests(vao_render_test)
 gtest_discover_tests(performance_opengl_test)
+gtest_discover_tests(render_data_holder_test)

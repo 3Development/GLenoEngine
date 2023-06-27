@@ -58,6 +58,7 @@ void kl(){
 }
 
 int main(){
+    std::cout<<sizeof(unsigned char)<<std::endl;
     kl();
     return 0;
 }

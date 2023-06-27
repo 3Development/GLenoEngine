@@ -6,12 +6,52 @@
 #include "yaml-cpp/yaml.h"
 #include "core/gl/vbo&vao/vaoVbo.h"
 #include "utilz/math/algebra/linear_functions/transformation_matrices.h"
-#include "core/engine/objects/entityGroup.h"
+#include "core/engine/objects/model/modelGroup.h"
 #include "glm/gtc/type_ptr.hpp"
+#include "core/engine/render/holder/renderDataHolder.h"
+#include "core/engine/render/renderEngine/renderController.h"
 #include <glm/glm.hpp>
 #include <chrono>
 
 using namespace std::chrono;
+
+/**
+ * TIMER CLASS
+ */
+
+class Timer{
+
+public:
+
+    Timer(){
+        _startPoint = std::chrono::high_resolution_clock::now();
+    }
+    ~Timer(){
+        stop();
+    }
+
+    void stop(){
+
+        auto endPoint = std::chrono::high_resolution_clock::now();
+
+        auto start = std::chrono::time_point_cast<std::chrono::microseconds>(_startPoint).time_since_epoch().count();
+        auto end = std::chrono::time_point_cast<std::chrono::microseconds>(endPoint).time_since_epoch().count();
+
+
+        auto duration = end - start;
+        auto ms = duration * 0.001;
+        auto seconds = duration * 0.000001;
+        std::cout<<"______TIMER_______"<<std::endl;
+
+        std::cout<<"Duration in micro  "<<duration<<std::endl;
+        std::cout<<"Duration in milis  "<<ms<<std::endl;
+        std::cout<<"Duration in seconds  "<<seconds<<std::endl;
+
+        std::cout<<"______TIMER_______\n\n\n"<<std::endl;
+    }
+private:
+    std::chrono::time_point<std::chrono::high_resolution_clock > _startPoint;
+};
 
 void GLAPIENTRY
 MessageCallback( GLenum source,
@@ -446,6 +486,126 @@ void test3(){
     }
 }
 
+
+void test4(){
+    YAML::Node config = YAML::LoadFile("/home/leno/DevelopmentCenter/Projects/GameDev/Engines/GLenoEngine/properties/engine_properties.yaml");
+    if (!glfwInit())
+    {
+        // Initialization failed
+        std::cout<<"Helldsadsao word!l"<<std::endl;
+    }
+
+    // Open buffer window and create its OpenGL context
+    //Using buffer field of class window, this one will store the pointer to the window
+    GLFWwindow* window = glfwCreateWindow( 1024, 768, "Tutorial 01", NULL, NULL);
+
+    if(window == NULL){
+        glfwTerminate();
+    }
+
+    float value = -0.5f;
+    std::thread first(test,&value);
+    first.detach();
+
+    glfwMakeContextCurrent(window);
+
+
+    glewExperimental=true;
+    if(glewInit() != GLEW_OK){
+        std::cout<<"Glew not initialized "<<std::endl;
+    }
+
+    glEnable              ( GL_DEBUG_OUTPUT );
+    glDebugMessageCallback( MessageCallback, 0 );
+
+
+    std::string root = std::string(config["resourceRootDir"].as<std::string>());
+    std::string vertex = std::string(root).append("shaders/basic/basicShader.vert");
+    std::string fragment = std::string(root).append("shaders/basic/basicShader.frag");
+
+    ShaderProgram shaderProgram(vertex.c_str(),fragment.c_str());
+
+    int slots = 3 * 3;
+    ModelGroup<2, 3 * 3,VAO_5> entityGroup;
+
+
+
+    shaderProgram.initProgram();
+
+    shaderProgram.createShaders();
+
+    entityGroup.initVao5(true);
+    VAO_5* vao5C = entityGroup.getVao5();
+
+    float positions[12] = {
+            -0.5f,-0.5f,0, //0
+            0.5f,0.5f,0, // 1
+            0.5f,-0.5f,0, // 2
+            -0.5f,0.5f,0 // 3
+    };
+    int indices[]={
+            0,1,2,
+            0,3,1
+    };
+
+
+    float color[24] = {
+            1,0,0.2,1,
+            0.3,1,0.2,1,
+            0,0,0,1,
+
+            1,0,0,1,
+            0.5,1,0.5,1,
+            0,0,0,1,
+    };
+    try{
+        initializeVboObjectAndSaveItAtIndexAttrPointer(vao5C, positions,sizeof(float)*12 ,GL_ARRAY_BUFFER,GL_FLOAT,0,3,sizeof(float)*3);
+        initializeVboObjectAndSaveItAtIndexAttrPointer(vao5C, color,sizeof(float)*24 ,GL_ARRAY_BUFFER,GL_FLOAT,1,4,sizeof(float)*4);
+        initializeVboObjectAndSaveItAtIndexAttrPointer(vao5C, indices,sizeof(float)*6 ,GL_ELEMENT_ARRAY_BUFFER,GL_FLOAT,-1,-1,-1);
+
+    }catch (VboVaoEnums::ErrorCodes e){
+        if (e == VboVaoEnums::VA0_NO_FREE_SLOT_IN_VBO_ARRAY){
+            std::cout<<"VAO_NO_FREE_SLOT_IN_VBO_ARRAY";
+            return;
+        }
+    }
+
+
+    entityGroup.setActivateVaoFuncType([](VAO_5* vao5){
+        prepareVaoForDrawing(vao5);
+    });
+
+
+    entityGroup.setEntityDrawFuncType([&shaderProgram](ENTITIES_GROUP_DATA data,const ENTITIES_GROUP_ACTIVE& activeEntities,const UniformsHolder* uniformsHolder1){
+
+
+    });
+
+    shaderProgram.activateProgram();
+
+    while(!glfwWindowShouldClose(window)){
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        {
+            entityGroup.activateVao();
+            entityGroup.draw();
+        }
+
+        glfwPollEvents();
+
+        drawVaoUsingIndices(6);
+
+
+        glfwSwapBuffers(window);
+
+    }
+}
+
+
+void test5(){
+    MainGLRenderObject renderDataHolder;
+}
+
 int main(){
-    test3();
+    test4();
 }

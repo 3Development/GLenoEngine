@@ -42,7 +42,21 @@ void createTranslationMatrix4x4(Mat4x4* mat4X4,Vec3* vec){
     mat4X4->matrix[(3*4)+2] = vec->z;
     mat4X4->matrix[(3*4)+3] = 1;
 }
-
+/**
+ * Applying a components of vector3 into matrix in a way that this matrix will
+ * represent translation matrix
+ *
+ *
+ * (3x4) -> means third row, and why is it going * 4 because if we flatten the matrix the third row and first column is equal to index 12
+ * @param mat4X4
+ * @param vec3
+ */
+void createTranslationMatrix4x4(Mat4x4* mat4X4,float x, float y, float z){
+    mat4X4->matrix[(3*4)+0] = x;
+    mat4X4->matrix[(3*4)+1] = y;
+    mat4X4->matrix[(3*4)+2] = z;
+    mat4X4->matrix[(3*4)+3] = 1;
+}
 
 /**
  * Create a scale matrix
@@ -53,6 +67,16 @@ void createScaleMatrix4x4(Mat4x4* mat4X4, Vec3* vec3){
     mat4X4->matrix[(0*4) + 0] = vec3->x;
     mat4X4->matrix[(1*4) + 1] = vec3->y;
     mat4X4->matrix[(2*4) + 2] = vec3->z;
+}
+
+/**
+ * Applying a component of vector3 that represents a scale in way that this matrix will represent
+ * a scale matrix
+ */
+void createScaleMatrix4x4(Mat4x4* mat4X4, float x, float y, float z){
+    mat4X4->matrix[(0*4) + 0] = x;
+    mat4X4->matrix[(1*4) + 1] = y;
+    mat4X4->matrix[(2*4) + 2] = z;
 }
 
 /**
