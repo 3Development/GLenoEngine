@@ -515,7 +515,7 @@ void test4(){
         std::cout<<"Glew not initialized "<<std::endl;
     }
 
-    glEnable              ( GL_DEBUG_OUTPUT );
+    glEnable( GL_DEBUG_OUTPUT );
     glDebugMessageCallback( MessageCallback, 0 );
 
 
@@ -607,5 +607,5 @@ void test5(){
 }
 
 int main(){
-    test4();
+    test3();
 }
